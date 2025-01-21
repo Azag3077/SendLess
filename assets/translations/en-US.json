@@ -1,268 +1,60 @@
 {
-  "amount": "Amount",
-  "continueStr": "Continue",
-  "email": "Email",
-  "enterYourEmail": "Enter your email",
-  "password": "Password",
-  "loading": "Loading, please wait...",
-  "processing": "Loading, please wait...",
-  "total": "Total",
-  "termsAndCondition": "By clicking continuing you hereby accept the Terms of service & Privacy Policy",
-  "termsAndConditionLink": "Terms of service & Privacy Policy",
-  "shareLinkBottomSheetText": "Hey! I've started using PapiFi and want to suggest you do the same with PapiFi",
-  "gender": {
+  "genderEnum": {
     "male": "Male",
     "female": "Female"
   },
-  "txnStatus": {
-    "completed": "Completed",
-    "pending": "Pending",
-    "failed": "Failed",
-    "processing": "Processing",
-    "reversed": "Reversed",
-    "canceled": "Canceled"
+
+  "onboardingPage": {
+    "heading": "Global Money Movement, Simplified: Send, Receive, Pay, Repeat.",
+    "subheading": "Make quick transactions with SendLess",
+    "callToAction": "Get Started",
+    "alreadyHaveAnAccount": "Already Have an account? ",
+    "login": "Login"
   },
-  "addCard": {
-    "title": "Add card",
-    "subtitle": "Enter your credit card info into the box below.",
-    "accountHolderName": "Account Holder Name",
-    "enterName": "Enter name",
-    "hintText": "We accept cards issued in the EU, the UK, Canada and the United State of America only",
-    "seeFullList": "see full list",
-    "verify": "Verify",
-    "cardVerified": "Card Verified",
-    "cardVerifiedSubtext": "You will be redirected to the main page in a few moments"
+  "onboardingPage2": {
+    "heading": "Securely access your accounts from anywhere",
+    "subheading": "Enjoy convenient and secure access to your accounts, anytime, anywhere.",
+    "callToAction": "NEXT"
   },
-  "addMoney": {
-    "title": "Select payment method",
-    "bankTransfer": "Bank Transfer",
-    "sendMoneyFromYourBankAccount": "Send money from your bank account",
-    "cardPayment": "Card Payment",
-    "payUsingYourCreditOrDebitCard": "Pay using your credit or debit card",
-    "applePay": "Apple Pay",
-    "googlePay": "Google Pay",
-    "addNewCard": "Add new card"
-  },
-  "card": {
-    "noVirtualCardTitle": "There's a single upfront fee.",
-    "subtitle": "A one-time setup fee of $5 will be deducted from your USD balance.",
-    "cardCreationFee": "Card creation fee",
-    "cardTopUp": "Card top up",
-    "createMyVirtualCard": "Create my virtual card",
-    "loadingSpinnerMsg": "Creating your virtual\ncard, please wait...",
-    "title": "Virtual Card",
-    "freezeCard": "Freeze card",
-    "more": "More",
-    "cardDetails": "Card details",
-    "recentTransactions": "Recent transactions",
-    "viewAll": "View all",
-    "virtualCardDetails": "Virtual card details",
-    "cardDetailsSheetTitle": "Your {} Virtual Card details",
-    "cardName": "Card Name",
-    "cardNumber": "Card Number",
-    "cvv": "CVV",
-    "expiryDate": "Expiry Date",
-    "billingAddress": "Billing Address",
-    "zipCode": "Zip Code",
-    "freeze": "Please enter your 4-digit pin to freeze your account",
-    "unfreeze": "Please enter your 4-digit pin to unfreeze your account"
-  },
-  "changePassword": {
-    "title": "Change Password"
-  },
-  "forgotPassword": {
-    "title": "Reset Password",
-    "subtitle": "Enter your email, we will send you a verification code to reset you password"
-  },
-  "resetPassword": {
-    "title": "New Password",
-    "subtitle": "Create a strong password you can remember",
-    "newPassword": "New password",
-    "enterANewPassword": "Enter a new password",
-    "confirmNewPassword": "Confirm new password",
-    "reEnterYourNewPassword": "Re-enter your new password",
-    "resetSuccessful": "Reset Successful!",
-    "resetSuccessfulHint": "Please sign in to PAPIFI with your new password",
-    "goToSignIn": "Go to Sign in"
-  },
-  "earn": {
-    "title": "Earn",
-    "activeBalance": "Active balance",
-    "inviteAFriendAndGet": "Invite a friend and get",
-    "giveAndGet": "Give a friend promo code and get £15.00 added to your account",
-    "showQRCode": "Show QR code",
-    "shareLink": "Share Link"
-  },
-  "editProfile": {
-    "title": "Edit Profile",
-    "edit": "Edit",
-    "update": "Update",
-    "cancel": "Cancel",
-    "refCode": "Ref code: {}",
-    "fullname": "Fullname",
-    "address": "Address",
-    "phoneNumber": "Phone number",
-    "country": "Country",
-    "dob": "Date of birth",
-    "gender": "Gender",
-    "nationality": "Nationality",
-    "enterFullname": "Enter fullname",
-    "enterAddress": "Enter address",
-    "enterPhoneNumber": "Enter phone number"
-  },
-  "home": {
-    "welcome": "Welcome",
-    "getYourUSBankAccount": "Get your US Bank Account",
-    "addMoney": "Add money",
-    "sendMoney": "Send money",
-    "transactions": "Transactions",
-    "recipients": "Recipients",
-    "readyForYourFirstTransaction": "Ready for your first transaction?",
-    "allActivitiesWillBeShownHere": "All activities will be shown here",
-    "todayExchangeRate": "Today's exchange rate",
-    "selectWallet": "Select Wallet",
-    "logIn": "Log In",
-    "joinNow": "Join Now",
-    "settings": "Settings",
-    "freezeAccount": "Freeze Account",
-    "temporarilyMakeYourAccountInactive": "temporarily make your account inactive",
-    "changePassword": "Change Password",
-    "helpSupport": "Help & support",
-    "privacyPolicy": "Privacy policy",
-    "notification": "Notification",
-    "faceID": "Face ID",
-    "loginAuthentication": "Login Authentication",
-    "other": "Other",
-    "language": "Language",
-    "region": "Region",
-    "logOut": "Log Out",
-    "verifyYourAccount": "Please verify your account to enable transactions.",
-    "yourAccountVerificationIsIncomplete": "Your account verification is incomplete, preventing you from making transactions on Papifi. Please complete the process to enable transactions."
-  },
-  "login": {
-    "title": "Welcome back",
-    "subtitle": "Create an account or log in to explore our app",
-    "signinWithGoogle": "Sign in with Google",
-    "signinWithApple": "Sign in with Apple",
-    "or": "Or",
-    "enterYourPassword": "Enter your password",
-    "rememberMe": "Remember me",
+  "loginPage": {
+    "title": "Log in",
+    "enterPhoneOrEmail": "Enter Phone No/email",
+    "passwordLabel": "Enter password",
+    "passwordHint": "Password",
     "forgotPassword": "Forgot Password?",
-    "doNotHaveAnAccount": "Don't have an account?",
-    "signUp": "Sign up"
+    "login": "Login"
   },
-  "navigation": {
-    "home": "Home",
-    "card": "Card",
-    "recipient": "Recipient",
-    "earn": "Earn",
-    "profile": "Profile"
-  },
-  "onboarding": {
-    "getStarted": "Get started",
-    "alreadyHaveAnAccount": "Already have an account",
-    "cardTitle1": "Real-time Exchange Rates",
-    "cardSubtitle1": "Our app provides Real-time Exchange Rates, ensuring you get the most accurate and up-to-date currency conversion information.",
-    "cardTitle2": "Financial News",
-    "cardSubtitle2": "Stay up-to-date with the latest Financial News, where we bring you breaking stories and in-depth analysis from the world of finance.",
-    "cardTitle3": "Market Trends",
-    "cardSubtitle3": "Our Market Trends section keeps you informed about the latest movements and patterns in the financial markets.",
-    "cardTitle4": "Regulatory Changes",
-    "cardSubtitle4": "Stay informed about important Regulatory Changes in the financial industry through our comprehensive updates.",
-    "scrollingText": "ACCOUNT MANAGEMENT & PAYMENT / TRANSFER"
-  },
-  "send_money": {
-    "title": "Send Money",
-    "international": "International",
-    "localTransfer": "Local Transfer",
-    "toReceiveLiveRatesAlertsNotifications": "To receive live rates alerts notifications",
-    "amountToSend": "Amount to send",
-    "bal": "Available balance: {}",
-    "indicativeExchangeRate": "Indicative Exchange Rate",
-    "sendToBank": "Send to bank",
-    "transferFundsDirectly": "Transfer funds directly to your recipient's bank account",
-    "sendViaPapifiWallet": "Send via Papifi wallet",
-    "sendFundsDirectlyToAPapifiWallet": "Send funds directly to a Papifi Wallet using their wallet id"
-  },
-  "transfer": {
-    "title": "Transfer",
-    "bodyText": "Use the details below to send money to your Papifi account from any bank through internet banking.",
-    "bankName": "Bank name",
-    "accountNumber": "Account number",
-    "accountName": "Account name",
-    "copy": "Copy"
-  },
-  "kyc": {
-    "page1Title": "Let's verify your identity in 2 minutes",
-    "page1Subtitle": "Verification of your identity is necessary to protect your account by providing the following information",
-    "page1note": "Please note before we begin:",
-    "note1": "Prepare a valid government issued ID",
-    "note2": "Verify if the camera on your device is active and exposed.",
-    "note3": "Prepare to snap a selfie and images of your identification.",
-    "page1HintText": "Your section audio and video my be recorded, Verify uses automation to verify your identity. read more about your personal data processing in verify's Privacy Notice",
-    "page2Title": "Let's obtain your transaction verification.",
-    "page2Subtitle": "Please supply the following details so that we can protect your account and help us validate your identity.",
-    "page2note": "Approximately 2 minutes:",
-    "selectDocumentType": "Select document type",
-    "page2HintText": "if you can't find your document type or country of issue, please contact ",
-    "support": "support.",
-    "document": "document.",
-    "replaceDocument": "Replace document",
-    "uploadDocHintText": "Upload a picture of your {}",
-    "uploadDocErrorText": "Please select a document type first.",
-    "documentType": {
-      "standardNINSlip": "Standard NIN Slip",
-      "premiumNINSlip": "Premium NIN Slip",
-      "nationalIDCard": "National ID Card",
-      "nationalPassport": "National Passport",
-      "driversLicense": "Drivers License"
-    }
-  },
-  "tnx_pin": {
-    "createPinTitle": "Create your Papifi pin",
-    "enterPinTitle": "Enter your Papifi pin",
-    "subtitle": "Enter a 4-digit code you wouldn't forget",
-    "field1labelText": "Transaction pin",
-    "field2labelText": "Confirm transaction pin",
-    "field1hintText": "Enter transaction pin",
-    "field2hintText": "Re-enter transaction pin"
-  },
-  "transactions": {
-    "title": "Transaction history",
-    "searchTransactions": "Search transactions",
-    "all": "All",
-    "successful": "Successful",
-    "pending": "Pending",
-    "failed": "Failed",
-    "filters": "Filters",
-    "clear": "Clear",
-    "period": "Period",
-    "today": "Today",
-    "thisWeek": "This week",
-    "thisMonth": "This month",
-    "previousMonth": "Previous month",
-    "thisYear": "This year",
-    "selectPeriod": "Select period",
-    "status": "Status",
-    "confirmed": "Confirmed",
-    "canceled": "Canceled",
-    "showResults": "Show results",
-    "startDate": "Start Date",
-    "endDate": "End Date"
-  },
-  "qr_code": {
-    "title": "Ask your friend to open the Camera app on their phone and scan the code",
-    "successfulToastMessage": "QR Code successfully saved to gallery",
-    "failedToastMessage": "Unable to download qr_code"
-  },
-  "otp_verification": {
-    "title": "Enter the 6 digit verification code sent to ",
-    "incorrectCode": "Incorrect code",
-    "resendCode": "Resend code",
-    "resendCodeIn": "Resend code in {}"
-  },
-  "language": {
-    "language": "Language",
-    "subtitle": "AVAILABLE LANGUAGES"
+  "signupPage": {
+    "basicInformationPageView": {
+      "title": "Basic Information",
+      "firstnameLabel": "First name",
+      "firstnameHint": "Enter your first name",
+      "legalSurnameLabel": "Legal surname",
+      "legalSurnameHint": "Please enter your legal surname",
+      "emailLabel": "Email",
+      "emailHint": "Enter your email",
+      "phoneNumber": "Phone number",
+      "genderLabel": "Gender",
+      "genderHint": "Select gender"
+    },
+    "createPasswordPageView": {
+      "title": "Create Password",
+      "passwordLabel": "Enter password",
+      "passwordHint": "Password",
+      "confirmPasswordLabel": "Confirm password",
+      "nCharacters": "8 characters",
+      "anUppercaseLetter": "An uppercase letter",
+      "aLowercaseLetter": "A lowercase letter",
+      "aSpecialCharacters": "A special characters",
+      "aNumber": "A number",
+      "termsAndCondition": "By continuing, you agree to our Terms of service and Privacy policy."
+    },
+    "verifyEmailPageView": {
+      "title": "Verify your email",
+      "subtitle": "Please enter the OTP sent to {}",
+      "resendCode": "Resend Code"
+    },
+    "next": "Next",
+    "verifyAccount": "Verify Account"
   }
 }

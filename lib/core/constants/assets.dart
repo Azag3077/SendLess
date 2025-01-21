@@ -8,7 +8,7 @@ class _PngAssetsName {
 
   final money = '$_root/money.png';
   final search = '$_root/search.png';
-  final splash = '$_root/splash.png';
+  final splash = '$_root/launcher-icon.jpg';
   final onboarding = '$_root/onboarding.png';
   final visaCard = '$_root/vise-card.png';
 }

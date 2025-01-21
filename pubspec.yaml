@@ -1,5 +1,5 @@
 name: emm_pay
-description: "A new Flutter project."
+description: "A bill payment platform, Emmpay"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -19,21 +19,22 @@ dependencies:
   shimmer: ^3.0.0
   easy_localization: ^3.0.7
   flutter_secure_storage: ^9.2.4
+  country_state_city: ^0.1.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
-#  flutter_launcher_icons: ^0.14.3
-  flutter_launcher_icons: "^0.13.1"
+  flutter_launcher_icons: ^0.14.3
+  riverpod_lint: ^2.6.4
+  custom_lint: ^0.7.1
 
 flutter_launcher_icons:
   ios: true
   remove_alpha_ios: true
   android: "launcher_icon"
-#  image_path: "assets/icons/launcher_icon.png"
-  image_path: "assets/images/pngs/visa-card.png"
+  image_path: "assets/images/pngs/launcher-icon.jpg"
 
 flutter:
   uses-material-design: true

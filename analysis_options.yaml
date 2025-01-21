@@ -6,3 +6,8 @@ linter:
     - prefer_const_declarations
     - prefer_const_literals_to_create_immutables
     - prefer_single_quotes
+    - prefer_relative_imports
+
+analyzer:
+  plugins:
+    - custom_lint
