@@ -6,11 +6,11 @@ class CustomFilledButton extends StatelessWidget {
   const CustomFilledButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
   });
 
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,10 @@ class SelectionButton<T> extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       side: BorderSide(
-                        color: Colors.black.withValues(alpha: .3),
+                        width: 1.5,
+                        color: showError
+                            ? Theme.of(context).colorScheme.error
+                            : Colors.black.withValues(alpha: .3),
                       ),
                     ),
                     child: Row(

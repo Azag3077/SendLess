@@ -1,78 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../../components/textfields.dart';
 import '../../../../../core/constants/texts.dart';
-import '../../../../../core/validators.dart';
-import '../components/phone_number_field_prefix_button.dart';
+import '../../provider.dart';
 
-class VerifyEmailPageView extends StatelessWidget {
-  const VerifyEmailPageView({super.key});
+class VerifyEmailPageView extends ConsumerWidget {
+  const VerifyEmailPageView({
+    super.key,
+    required this.email,
+    required this.controller,
+  });
 
-  static final _pageText = AppTexts.signupPage.basicInformation;
+  final String email;
+  final TextEditingController controller;
+
+  static final _pageText = AppTexts.signupPage.verifyEmailPageView;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            _pageText.title.tr(),
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 26.0,
-            ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(signupPageProvider.notifier);
+
+    return Column(
+      children: <Widget>[
+        Text(
+          _pageText.title.tr(),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 26.0,
           ),
-          Expanded(
+        ),
+        const SizedBox(height: 24.0),
+        Text(
+          _pageText.subtitle.tr(args: [email]),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 16.0,
+            color: Colors.black.withValues(alpha: .89),
+          ),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
               children: <Widget>[
-                const SizedBox(height: 24.0),
-                SignupTextField(
-                  labelText: _pageText.firstnameLabel.tr(),
-                  hintText: _pageText.firstnameHint.tr(),
-                  keyboardType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  textInputAction: TextInputAction.next,
-                  // controller: notifier.firstnameController,
-                  validator: Validator.name,
-                ),
-                SignupTextField(
-                  labelText: _pageText.legalSurnameLabel.tr(),
-                  hintText: _pageText.legalSurnameHint.tr(),
-                  keyboardType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  textInputAction: TextInputAction.next,
-                  // controller: notifier.lastnameController,
-                  validator: Validator.name,
-                ),
-                SignupTextField(
-                  labelText: _pageText.emailLabel.tr(),
-                  hintText: _pageText.emailHint.tr(),
-                  keyboardType: TextInputType.emailAddress,
-                  textCapitalization: TextCapitalization.words,
-                  textInputAction: TextInputAction.next,
-                  // controller: notifier.emailController,
-                  validator: Validator.email,
-                ),
-                SignupTextField(
-                  labelText: 'Phone Number',
-                  // controller: notifier.phoneNumberController,
+                const SizedBox(height: 48.0),
+                PinCodeTextField(
+                  appContext: context,
+                  length: 4,
+                  autoFocus: true,
+                  controller: controller,
+                  cursorColor: Theme.of(context).primaryColor,
+                  keyboardType: TextInputType.number,
+                  errorTextSpace: 0,
+                  autoDisposeControllers: false,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  separatorBuilder: (_, __) => const SizedBox(width: 14.0),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  validator: Validator.validatePhoneNumber,
-                  keyboardType: TextInputType.phone,
-                  textInputAction: TextInputAction.next,
-                  prefixIcon: PhoneNumberFieldPrefixButton(
-                    // country: state.country,
-                    // onCodeTap: () => notifier.onCodeTap(context),
-                    onCodeTap: () {},
+                  onCompleted: (_) => notifier.onVerifyAccount(context),
+                  pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.box,
+                    fieldWidth: 48.0,
+                    fieldHeight: 56.0,
+                    activeFillColor: Colors.white,
+                    activeColor: Theme.of(context).primaryColor.withAlpha(150),
+                    inactiveColor: Colors.grey.shade400,
+                    selectedColor: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                const SizedBox(height: 24.0),
+                TextButton(
+                  onPressed: () => notifier.resendCode(context),
+                  child: Text(
+                    _pageText.resendCode.tr(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

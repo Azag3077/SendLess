@@ -97,16 +97,32 @@ class SignupTextField extends StatelessWidget {
                     fontSize: 14.0,
                     fontWeight: FontWeight.normal,
                   ),
+                  error: showError ? const SizedBox.shrink() : null,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
                       color: Colors.black.withValues(alpha: .3),
+                      width: 1.5,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
                       color: Theme.of(context).primaryColor,
+                      width: 1.5,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.5,
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(radius),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
                       width: 1.5,
                     ),
                   ),

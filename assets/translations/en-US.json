@@ -56,5 +56,72 @@
     },
     "next": "Next",
     "verifyAccount": "Verify Account"
+  },
+  "createPinPage": {
+    "title1": "Create Pin",
+    "title2": "Confirm Create Pin",
+    "subtitle": "Enter a 4-digit code you won’t forget",
+    "next": "Next",
+    "done": "Done"
+  },
+  "facialRecognitionPage": {
+    "title": "Facial Recognition",
+    "subtitle": "Facial Recognition",
+    "submit": "Submit"
+  },
+  "verifyPage": {
+    "title": "Verify",
+    "subtitle": "Verify your account to have complete benefit on the platform",
+    "idType": "ID Type",
+    "footer": "Your info encrypted and never shared",
+    "verifyMyAccount": "Verify my account",
+    "idTypes": {
+      "standardNINSlip": {
+        "name": "Standard NIN Slip",
+        "hint": ""
+      },
+      "premiumNINSlip": {
+        "name": "Premium NIN Slip",
+        "hint": ""
+      },
+      "nationalIDCard": {
+        "name": "National ID Card",
+        "hint": ""
+      },
+      "nationalPassport": {
+        "name": "National Passport",
+        "hint": ""
+      },
+      "driversLicense": {
+        "name": "Drivers License",
+        "hint": ""
+      }
+    }
+  },
+  "virtualAccountSelectionPage": {
+    "heading": "Virtual Account Selection",
+    "title": "Select Account Type",
+    "subtitle": "Please select the type of virtual account you would like to create. Each account type offers different features and benefits tailored to your needs. Make sure to review the details of each option before making your selection. If..",
+    "idType": "ID Type",
+    "footer": "Your info encrypted and never shared",
+    "verifyMyAccount": "Verify my account",
+    "accountTypes": {
+      "savingsAccount": {
+        "name": "Savings Account",
+        "hint": "Savings Account"
+      },
+      "checkingAccount": {
+        "name": "Checking Account",
+        "hint": "Checking Account"
+      },
+      "businessAccount": {
+        "name": "Business Account",
+        "hint": "Business Account"
+      },
+      "studentAccount": {
+        "name": "Student Account",
+        "hint": "Student Account"
+      }
+    }
   }
 }

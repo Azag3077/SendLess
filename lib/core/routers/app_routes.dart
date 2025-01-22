@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/create_pin/presentation/ui/page.dart';
+import '../../features/facial_recognition/presentation/ui/page.dart';
 import '../../features/login/presentation/ui/page.dart';
 import '../../features/signup/presentation/ui/page.dart';
 import '../../features/onboarding/presentation/ui.dart';
@@ -14,6 +16,8 @@ final appRoutes = <String, WidgetBuilder>{
   OnboardingPage2.routeName: (context) => const OnboardingPage2(),
   LoginPage.routeName: (context) => const LoginPage(),
   SignupPage.routeName: (context) => const SignupPage(),
+  CreatePinPage.routeName: (context) => const CreatePinPage(),
+  FacialRecognitionPage.routeName: (context) => const FacialRecognitionPage(),
 };
 
 Route<dynamic>? onGenerateRoute(RouteSettings settings) =>
@@ -21,7 +25,4 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) =>
 
 class CustomPageRoute<T> extends MaterialPageRoute<T> {
   CustomPageRoute({required super.builder, super.settings});
-
-  // @override
-  // Duration get transitionDuration => 800.milliseconds;
 }

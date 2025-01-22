@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../components/buttons.dart';
 import '../../../../../components/textfields.dart';
-import '../../../../../core/constants/constants.dart';
+import '../../../../../core/constants/enums.dart';
 import '../../../../../core/constants/texts.dart';
 import '../../../../../core/validators.dart';
 import '../../provider.dart';

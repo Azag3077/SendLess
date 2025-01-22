@@ -10,7 +10,7 @@ import '../../../../../core/routers/router.dart';
 final _searchStateProvider = StateProvider.autoDispose<String>((_) => '');
 
 final countriesFutureProvider =
-FutureProvider<List<Country>>((_) => getAllCountries());
+    FutureProvider<List<Country>>((_) => getAllCountries());
 
 class CountryBottomSheet extends ConsumerWidget {
   CountryBottomSheet({
@@ -175,8 +175,9 @@ class CountryRadioListTile extends StatelessWidget {
       elevation: 0,
       height: 56.0,
       padding: const EdgeInsets.all(12.0),
-      color:
-          isSelected ? Theme.of(context).primaryColor.withOpacity(.15) : null,
+      color: isSelected
+          ? Theme.of(context).primaryColor.withValues(alpha: .15)
+          : null,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
         side: BorderSide(

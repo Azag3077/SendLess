@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../components/textfields.dart';
 import '../../../../../core/constants/texts.dart';
+import '../../../../../core/extensions/string.dart';
 import '../../../../../core/validators.dart';
+import '../../provider.dart';
 
-class CreatePasswordPageView extends StatelessWidget {
+class CreatePasswordPageView extends ConsumerWidget {
   const CreatePasswordPageView({
     super.key,
     required this.formKey,
@@ -19,19 +22,22 @@ class CreatePasswordPageView extends StatelessWidget {
   final TextEditingController password2Controller;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            _pageText.title.tr(),
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 26.0,
-            ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(signupPageProvider);
+    final notifier = ref.read(signupPageProvider.notifier);
+
+    return Column(
+      children: <Widget>[
+        Text(
+          _pageText.title.tr(),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 26.0,
           ),
-          Expanded(
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Form(
               key: formKey,
               child: Column(
@@ -43,37 +49,59 @@ class CreatePasswordPageView extends StatelessWidget {
                     hintText: _pageText.passwordHint.tr(),
                     textInputAction: TextInputAction.next,
                     controller: password1Controller,
-                    validator: Validator.name,
+                    obscureText: state.obscureText,
+                    validator: Validator.password1,
+                    suffixIcon: IconButton(
+                      onPressed: notifier.toggleObscureText,
+                      icon: Icon(
+                        state.obscureText
+                            ? CupertinoIcons.eye_slash
+                            : CupertinoIcons.eye,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                   SignupTextField(
                     labelText: _pageText.confirmPasswordLabel.tr(),
                     hintText: _pageText.passwordHint.tr(),
                     textInputAction: TextInputAction.next,
                     controller: password2Controller,
-                    validator: Validator.name,
+                    obscureText: state.obscureText,
+                    validator: (value) => Validator.password2(
+                        value, password1Controller.text.trim()),
+                    suffixIcon: IconButton(
+                      onPressed: notifier.toggleObscureText,
+                      icon: Icon(
+                        state.obscureText
+                            ? CupertinoIcons.eye_slash
+                            : CupertinoIcons.eye,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
+                  const SizedBox(height: 8.0),
                   Wrap(
                     spacing: 8.0,
                     children: <Widget>[
-                      Chip(
-                        label: Text(_pageText.nCharacters.tr()),
-                        visualDensity: VisualDensity.compact,
+                      CustomChip(
+                        text: _pageText.nCharacters.tr(),
+                        isSelected: state.password.length >= 8,
                       ),
-                      Chip(
-                        label: Text(_pageText.aNumber.tr()),
-                        visualDensity: VisualDensity.compact,
+                      CustomChip(
+                        text: _pageText.aNumber.tr(),
+                        isSelected: state.password.hasDigit,
                       ),
-                      Chip(
-                        label: Text(_pageText.anUppercaseLetter.tr()),
-                        visualDensity: VisualDensity.compact,
+                      CustomChip(
+                        text: _pageText.anUppercaseLetter.tr(),
+                        isSelected: state.password.hasUppercase,
                       ),
-                      Chip(
-                        label: Text(_pageText.aLowercaseLetter.tr()),
-                        visualDensity: VisualDensity.compact,
+                      CustomChip(
+                        text: _pageText.aLowercaseLetter.tr(),
+                        isSelected: state.password.hasLowercase,
                       ),
-                      Chip(
-                        label: Text(_pageText.aSpecialCharacters.tr()),
-                        visualDensity: VisualDensity.compact,
+                      CustomChip(
+                        text: _pageText.aSpecialCharacters.tr(),
+                        isSelected: state.password.hasSpecialCharacters,
                       ),
                     ],
                   ),
@@ -81,8 +109,29 @@ class CreatePasswordPageView extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+}
+
+class CustomChip extends StatelessWidget {
+  const CustomChip({
+    super.key,
+    required this.text,
+    required this.isSelected,
+  });
+
+  final String text;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      label: Text(text),
+      visualDensity: VisualDensity.compact,
+      backgroundColor:
+          isSelected ? Theme.of(context).colorScheme.primaryContainer : null,
     );
   }
 }

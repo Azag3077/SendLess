@@ -18,18 +18,11 @@ class LoginPage extends ConsumerWidget {
     final notifier = ref.read(loginPageProvider);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text(_pageText.title.tr())),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           children: <Widget>[
-            Text(
-              _pageText.title.tr(),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 26.0,
-              ),
-            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

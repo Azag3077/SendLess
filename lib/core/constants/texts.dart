@@ -5,6 +5,8 @@ class AppTexts {
   static final onboardingPage2 = _OnboardingPage2();
   static final loginPage = _LoginPage();
   static final signupPage = _SignupPage();
+  static final createPinPage = _CreatePinPage();
+  static final facialRecognitionPage = _FacialRecognitionPage();
 }
 
 class _OnboardingPage {
@@ -79,4 +81,20 @@ class _SignupPage {
 
   final next = '$_.next';
   final verifyAccount = '$_.verifyAccount';
+}
+
+class _CreatePinPage {
+  static const _ = 'createPinPage';
+  final title1 = '$_.title1';
+  final title2 = '$_.title2';
+  final subtitle = '$_.subtitle';
+  final next = '$_.next';
+  final done = '$_.done';
+}
+
+class _FacialRecognitionPage {
+  static const _ = 'facialRecognitionPage';
+  final title = '$_.title';
+  final subtitle = '$_.subtitle';
+  final submit = '$_.submit';
 }

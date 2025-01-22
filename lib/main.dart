@@ -10,12 +10,14 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(
-    EasyLocalization(
-      path: 'assets/translations',
-      fallbackLocale: const Locale('en', 'US'),
-      supportedLocales: kLanguages.keys.toList(),
-      useFallbackTranslationsForEmptyResources: true,
-      child: const ProviderScope(child: EmmPay()),
+    ProviderScope(
+      child: EasyLocalization(
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en', 'US'),
+        supportedLocales: kLanguages.keys.toList(),
+        useFallbackTranslationsForEmptyResources: true,
+        child: const EmmPay(),
+      ),
     ),
   );
 }
@@ -34,6 +36,14 @@ class EmmPay extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3E9850)),
         primaryColor: const Color(0xFF3E9850),
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontSize: 26.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         bottomSheetTheme: BottomSheetThemeData(
           showDragHandle: true,
           backgroundColor: Colors.white,
@@ -41,9 +51,9 @@ class EmmPay extends StatelessWidget {
         ),
         chipTheme: ChipThemeData(
           padding: EdgeInsets.zero,
-          labelStyle: const TextStyle(
+          labelStyle: TextStyle(
             fontSize: 12.0,
-            color: Colors.blueGrey,
+            color: Colors.blueGrey.shade600,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),

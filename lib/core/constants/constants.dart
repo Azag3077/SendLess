@@ -14,10 +14,3 @@ const kDefaultSupportedCounties = ['NG', 'CA', 'US', 'GB'];
 
 String kCountryFlag(String code) =>
     'https://flagcdn.com/w320/${code.toLowerCase()}.png';
-
-enum Gender {
-  male,
-  female;
-
-  String get trKey => 'genderEnum.$name';
-}

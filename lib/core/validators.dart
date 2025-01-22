@@ -92,7 +92,7 @@ class Validator {
     return null;
   }
 
-  static String? validatePassword1(String? value) {
+  static String? password1(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Please enter a password';
     }
@@ -110,7 +110,7 @@ class Validator {
     return null;
   }
 
-  static String? validatePassword2(String? value1, String value2) {
+  static String? password2(String? value1, String value2) {
     if (value1 == null || value1.trim().isEmpty) {
       return 'Please enter a password';
     }
