@@ -1,5 +1,5 @@
 class AssetImages {
-  static final png = _PngAssetsName();
+  static final pngs = _PngAssetsName();
   static final svgs = _SvgAssetsName();
 }
 
@@ -10,12 +10,21 @@ class _PngAssetsName {
   final search = '$_root/search.png';
   final splash = '$_root/launcher-icon.jpg';
   final onboarding = '$_root/onboarding.png';
-  final visaCard = '$_root/vise-card.png';
+  final visaCard = '$_root/visa-card.png';
+  final homeCardBg = '$_root/home-card-bg.png';
+  final success = '$_root/success.png';
+  final screenshot = '$_root/screenshot.png';
 }
 
 class _SvgAssetsName {
   static const _root = 'assets/images/svgs';
 
-  final logo = '$_root/logo.svg';
-  final splashLogo = '$_root/splash_logo.svg';
+  final home = '$_root/home.svg';
+  final card = '$_root/card.svg';
+  final bill = '$_root/bill.svg';
+  final profile = '$_root/profile.svg';
+  final send = '$_root/send.svg';
+  final arrowLeftRight = '$_root/arrow-left-right.svg';
+  final arrowUpRight = '$_root/arrow-up-right.svg';
+  final briefCase = '$_root/brief-case.svg';
 }

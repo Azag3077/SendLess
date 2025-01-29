@@ -7,6 +7,8 @@ class AppTexts {
   static final signupPage = _SignupPage();
   static final createPinPage = _CreatePinPage();
   static final facialRecognitionPage = _FacialRecognitionPage();
+  static final verifyPage = _VerifyPage();
+  static final virtualAccountSelectionPage = _VirtualAccountSelectionPage();
 }
 
 class _OnboardingPage {
@@ -97,4 +99,22 @@ class _FacialRecognitionPage {
   final title = '$_.title';
   final subtitle = '$_.subtitle';
   final submit = '$_.submit';
+}
+
+class _VerifyPage {
+  static const _ = 'verifyPage';
+  final title = '$_.title';
+  final subtitle = '$_.subtitle';
+  final idType = '$_.idType';
+  final idTypeHint = '$_.idTypeHint';
+  final footer = '$_.footer';
+  final verifyMyAccount = '$_.verifyMyAccount';
+}
+
+class _VirtualAccountSelectionPage {
+  static const _ = 'virtualAccountSelectionPage';
+  final heading = '$_.heading';
+  final title = '$_.title';
+  final subtitle = '$_.subtitle';
+  final done = '$_.done';
 }

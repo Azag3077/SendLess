@@ -51,7 +51,9 @@ class VerifyEmailPageView extends ConsumerWidget {
                   length: 4,
                   autoFocus: true,
                   controller: controller,
-                  cursorColor: Theme.of(context).primaryColor,
+                  cursorColor: Theme
+                      .of(context)
+                      .primaryColor,
                   keyboardType: TextInputType.number,
                   errorTextSpace: 0,
                   autoDisposeControllers: false,
@@ -64,9 +66,14 @@ class VerifyEmailPageView extends ConsumerWidget {
                     fieldWidth: 48.0,
                     fieldHeight: 56.0,
                     activeFillColor: Colors.white,
-                    activeColor: Theme.of(context).primaryColor.withAlpha(150),
+                    activeColor: Theme
+                        .of(context)
+                        .primaryColor
+                        .withAlpha(150),
                     inactiveColor: Colors.grey.shade400,
-                    selectedColor: Theme.of(context).primaryColor,
+                    selectedColor: Theme
+                        .of(context)
+                        .primaryColor,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
@@ -78,7 +85,9 @@ class VerifyEmailPageView extends ConsumerWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0,
-                      color: Theme.of(context).primaryColor,
+                      color: Theme
+                          .of(context)
+                          .primaryColor,
                     ),
                   ),
                 ),

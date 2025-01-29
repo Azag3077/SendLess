@@ -7,19 +7,27 @@ enum Gender {
   String get trKey => 'genderEnum.$name';
 }
 
-enum IDTypes {
+enum TxnStatus {
+  all,
+  credit,
+  debit;
+
+  String get trKey => 'txnStatusEnum.$name';
+}
+
+enum IdType {
   standardNINSlip,
   premiumNINSlip,
   nationalIDCard,
   nationalPassport,
   driversLicense;
 
-  String get trKey => 'verifyPage.idTypes.$name';
+  String get trKey => 'verifyPage.idTypes.$name.name';
 
   String get hintTrKey => 'verifyPage.idTypes.$name.hint';
 }
 
-enum AccountTypes {
+enum AccountType {
   savingsAccount,
   checkingAccount,
   businessAccount,

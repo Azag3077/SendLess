@@ -1,6 +1,9 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../core/extensions/num_duration.dart';
+import 'animated_widgets.dart';
 
 class CustomFilledButton extends StatelessWidget {
   const CustomFilledButton({
@@ -45,7 +48,7 @@ class SelectionButton<T> extends StatelessWidget {
   final String? hintText;
   final T? initialValue;
   final String? Function(T?)? textBuilder;
-  final Future<T?> Function() onPressed;
+  final FutureOr<T?> Function() onPressed;
   final EdgeInsets margin;
   final FormFieldValidator<T>? validator;
 
@@ -113,13 +116,12 @@ class SelectionButton<T> extends StatelessWidget {
                     ),
                     child: Row(
                       children: <Widget>[
-                        if (hintText != null)
-                          Expanded(
-                            child: Text(
-                              textBuilder?.call(state.value) ?? hintText ?? '',
-                              style: textStyle,
-                            ),
+                        Expanded(
+                          child: Text(
+                            textBuilder?.call(state.value) ?? hintText ?? '',
+                            style: textStyle,
                           ),
+                        ),
                         Icon(
                           Icons.expand_more,
                           color: Theme.of(context).hintColor,
@@ -130,48 +132,120 @@ class SelectionButton<T> extends StatelessWidget {
                 ],
               ),
             ),
-            AnimatedSwitcher(
-              duration: 300.ms,
-              switchInCurve: Curves.easeInOut,
-              switchOutCurve: Curves.easeInOut,
-              transitionBuilder: (Widget child, Animation<double> animation) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: SizeTransition(
-                    sizeFactor: animation,
-                    child: child,
-                  ),
-                );
-              },
-              child: showError
-                  ? Padding(
-                      key: ValueKey<bool>(showError),
-                      padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.error,
-                            size: 16.0,
-                            color: Theme.of(context).colorScheme.error,
-                          ),
-                          const SizedBox(width: 4.0),
-                          Expanded(
-                            child: Text(
-                              state.errorText!,
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                            ),
-                          ),
-                        ],
+            CustomAnimatedSwitcher(
+              value: showError,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.error,
+                      size: 16.0,
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                    const SizedBox(width: 4.0),
+                    Expanded(
+                      child: Text(
+                        state.errorText ?? '',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                       ),
-                    )
-                  : SizedBox.shrink(key: ValueKey<bool>(showError)),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         );
       },
+    );
+  }
+}
+
+class CheckboxButton extends StatelessWidget {
+  const CheckboxButton({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.selected,
+    required this.onSelected,
+  });
+
+  final String title;
+  final String subtitle;
+  final bool selected;
+  final VoidCallback onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final pryColor = Theme.of(context).primaryColor.withValues(alpha: .7);
+    final bgColor = pryColor.withValues(alpha: .05);
+    final borderInactiveColor = Colors.grey.shade300;
+    final checkInactiveColor = Colors.grey.shade400;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12.0),
+      child: MaterialButton(
+        onPressed: onSelected,
+        elevation: 0,
+        color: selected ? bgColor : null,
+        padding: const EdgeInsets.all(12.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(
+            color: selected ? pryColor : borderInactiveColor,
+            width: 1.5,
+          ),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Color(0xFF3E4158),
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFFACAFC3),
+                      fontSize: 11.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8.0),
+            if (selected)
+              Icon(
+                CupertinoIcons.check_mark_circled_solid,
+                color: Theme.of(context).primaryColor,
+              )
+            else
+              SizedBox.square(
+                dimension: 20.0,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: checkInactiveColor,
+                      width: 1.5,
+                    ),
+                  ),
+                ),
+              ),
+            const SizedBox(width: 4.0),
+          ],
+        ),
+      ),
     );
   }
 }

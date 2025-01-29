@@ -16,19 +16,19 @@ Future<void> main() async {
         fallbackLocale: const Locale('en', 'US'),
         supportedLocales: kLanguages.keys.toList(),
         useFallbackTranslationsForEmptyResources: true,
-        child: const EmmPay(),
+        child: const SendLess(),
       ),
     ),
   );
 }
 
-class EmmPay extends StatelessWidget {
-  const EmmPay({super.key});
+class SendLess extends StatelessWidget {
+  const SendLess({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EmmPay',
+      title: 'SendLess',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -36,8 +36,10 @@ class EmmPay extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3E9850)),
         primaryColor: const Color(0xFF3E9850),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           centerTitle: true,
+          backgroundColor: Colors.white,
           titleTextStyle: TextStyle(
             fontSize: 26.0,
             color: Colors.black,
@@ -47,7 +49,9 @@ class EmmPay extends StatelessWidget {
         bottomSheetTheme: BottomSheetThemeData(
           showDragHandle: true,
           backgroundColor: Colors.white,
-          dragHandleColor: Theme.of(context).highlightColor,
+          dragHandleColor: Theme
+              .of(context)
+              .highlightColor,
         ),
         chipTheme: ChipThemeData(
           padding: EdgeInsets.zero,
@@ -59,6 +63,7 @@ class EmmPay extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),
+        textTheme: TextTheme(),
       ),
       onGenerateRoute: onGenerateRoute,
     );

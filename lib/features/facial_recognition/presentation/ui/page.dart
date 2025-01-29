@@ -26,9 +26,23 @@ class FacialRecognitionPage extends ConsumerWidget {
                 fontSize: 16.0,
               ),
             ),
-            const Expanded(
+            const SizedBox(height: 32.0),
+            Expanded(
               child: Column(
-                children: <Widget>[],
+                children: <Widget>[
+                  Container(
+                    width: 200.0,
+                    height: 200.0,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                ],
               ),
             ),
             CustomFilledButton(

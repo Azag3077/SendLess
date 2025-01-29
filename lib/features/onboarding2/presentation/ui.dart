@@ -33,7 +33,7 @@ class OnboardingPage2 extends ConsumerWidget {
           child: Column(
             children: <Widget>[
               const Spacer(),
-              Image.asset(AssetImages.png.money),
+              Image.asset(AssetImages.pngs.money),
               Text(
                 _pageText.heading.tr(),
                 textAlign: TextAlign.center,

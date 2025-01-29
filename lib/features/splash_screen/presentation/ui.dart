@@ -13,7 +13,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -29,6 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFBF7EE),
       appBar: AppBar(
         toolbarHeight: 0,
         backgroundColor: Colors.transparent,
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
       extendBodyBehindAppBar: true,
-      body: Center(child: Image.asset(AssetImages.png.splash)),
+      body: Center(child: Image.asset(AssetImages.pngs.splash)),
     );
   }
 }

@@ -3,6 +3,11 @@
     "male": "Male",
     "female": "Female"
   },
+  "txnStatusEnum": {
+    "all": "All",
+    "credit": "Credit",
+    "debit": "Debit"
+  },
 
   "onboardingPage": {
     "heading": "Global Money Movement, Simplified: Send, Receive, Pay, Repeat.",
@@ -66,23 +71,24 @@
   },
   "facialRecognitionPage": {
     "title": "Facial Recognition",
-    "subtitle": "Facial Recognition",
+    "subtitle": "Facial recognition is a secure and convenient way to verify your identity and protect your account.",
     "submit": "Submit"
   },
   "verifyPage": {
     "title": "Verify",
     "subtitle": "Verify your account to have complete benefit on the platform",
     "idType": "ID Type",
+    "idTypeHint": "Select an ID type",
     "footer": "Your info encrypted and never shared",
     "verifyMyAccount": "Verify my account",
     "idTypes": {
       "standardNINSlip": {
         "name": "Standard NIN Slip",
-        "hint": ""
+        "hint": "Please enter your 11 digit NIN"
       },
       "premiumNINSlip": {
         "name": "Premium NIN Slip",
-        "hint": ""
+        "hint": "Please enter your Premium NIN"
       },
       "nationalIDCard": {
         "name": "National ID Card",
@@ -102,25 +108,23 @@
     "heading": "Virtual Account Selection",
     "title": "Select Account Type",
     "subtitle": "Please select the type of virtual account you would like to create. Each account type offers different features and benefits tailored to your needs. Make sure to review the details of each option before making your selection. If..",
-    "idType": "ID Type",
-    "footer": "Your info encrypted and never shared",
-    "verifyMyAccount": "Verify my account",
+    "done": "Done",
     "accountTypes": {
       "savingsAccount": {
         "name": "Savings Account",
-        "hint": "Savings Account"
+        "hint": "Ideal for saving money with interest."
       },
       "checkingAccount": {
         "name": "Checking Account",
-        "hint": "Checking Account"
+        "hint": "Perfect for daily transactions."
       },
       "businessAccount": {
         "name": "Business Account",
-        "hint": "Business Account"
+        "hint": "Designed for business needs."
       },
       "studentAccount": {
         "name": "Student Account",
-        "hint": "Student Account"
+        "hint": "Tailored for students with special benefits."
       }
     }
   }

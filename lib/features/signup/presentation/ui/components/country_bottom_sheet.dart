@@ -10,7 +10,7 @@ import '../../../../../core/routers/router.dart';
 final _searchStateProvider = StateProvider.autoDispose<String>((_) => '');
 
 final countriesFutureProvider =
-    FutureProvider<List<Country>>((_) => getAllCountries());
+FutureProvider<List<Country>>((_) => getAllCountries());
 
 class CountryBottomSheet extends ConsumerWidget {
   CountryBottomSheet({
@@ -41,7 +41,10 @@ class CountryBottomSheet extends ConsumerWidget {
       padding: EdgeInsets.only(
         left: 16.0,
         right: 16.0,
-        bottom: MediaQuery.of(context).viewInsets.bottom,
+        bottom: MediaQuery
+            .of(context)
+            .viewInsets
+            .bottom,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -51,7 +54,10 @@ class CountryBottomSheet extends ConsumerWidget {
             children: <Widget>[
               Text(
                 'Select your country',
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .titleMedium,
               ),
               IconButton(
                 onPressed: () => pop(context),
@@ -77,14 +83,18 @@ class CountryBottomSheet extends ConsumerWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide: BorderSide(
-                  color: Theme.of(context).highlightColor,
+                  color: Theme
+                      .of(context)
+                      .highlightColor,
                   width: 1.6,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme
+                      .of(context)
+                      .primaryColor,
                   width: 1.6,
                 ),
               ),
@@ -108,10 +118,10 @@ class CountryBottomSheet extends ConsumerWidget {
 
                     final sorted = countries
                         .where((c) =>
-                            c.name
-                                .toLowerCase()
-                                .contains(search.toLowerCase()) ||
-                            c.phoneCode.contains(search))
+                    c.name
+                        .toLowerCase()
+                        .contains(search.toLowerCase()) ||
+                        c.phoneCode.contains(search))
                         .toList();
 
                     if (sorted.isEmpty) {
@@ -126,7 +136,7 @@ class CountryBottomSheet extends ConsumerWidget {
                           itemCount: sorted.length,
                           controller: scrollController,
                           separatorBuilder: (_, __) =>
-                              const SizedBox(height: 10.0),
+                          const SizedBox(height: 10.0),
                           itemBuilder: (BuildContext context, int index) {
                             final country = sorted.elementAt(index);
                             final isSelected =
@@ -142,8 +152,9 @@ class CountryBottomSheet extends ConsumerWidget {
                     );
                   },
                   error: (_, __) =>
-                      const Center(child: Text('Error loading country')),
-                  loading: () => const Center(
+                  const Center(child: Text('Error loading country')),
+                  loading: () =>
+                  const Center(
                     child: CircularProgressIndicator(),
                   ),
                 );
@@ -176,7 +187,10 @@ class CountryRadioListTile extends StatelessWidget {
       height: 56.0,
       padding: const EdgeInsets.all(12.0),
       color: isSelected
-          ? Theme.of(context).primaryColor.withValues(alpha: .15)
+          ? Theme
+          .of(context)
+          .primaryColor
+          .withValues(alpha: .15)
           : null,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
@@ -211,7 +225,9 @@ class CountryRadioListTile extends StatelessWidget {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               fillColor: WidgetStatePropertyAll(
                 isSelected
-                    ? Theme.of(context).primaryColor
+                    ? Theme
+                    .of(context)
+                    .primaryColor
                     : Colors.grey.shade400,
               ),
             ),

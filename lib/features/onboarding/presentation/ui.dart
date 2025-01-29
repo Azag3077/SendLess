@@ -28,7 +28,7 @@ class OnboardingPage extends ConsumerWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             alignment: Alignment.bottomCenter,
-            image: AssetImage(AssetImages.png.onboarding),
+            image: AssetImage(AssetImages.pngs.onboarding),
           ),
         ),
         child: Column(

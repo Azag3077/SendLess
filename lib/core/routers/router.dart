@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-Future<T?> pushNamed<T extends Object?>(
-  BuildContext context,
-  String routeName, {
-  Object? arguments,
-}) async =>
+Future<T?> pushNamed<T extends Object?>(BuildContext context,
+    String routeName, {
+      Object? arguments,
+    }) async =>
     await Navigator.of(context).pushNamed<T>(routeName, arguments: arguments);
 
-Future<void> pushReplacementNamed(
-  BuildContext context,
-  String routeName, {
-  Object? arguments,
-}) async =>
+Future<void> pushReplacementNamed(BuildContext context,
+    String routeName, {
+      Object? arguments,
+    }) async =>
     await Navigator.pushReplacementNamed(context, routeName,
         arguments: arguments);
 

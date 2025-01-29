@@ -1,5 +1,5 @@
-name: emm_pay
-description: "A bill payment platform, Emmpay"
+name: send_less
+description: "A bill payment platform, SendLess"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -20,6 +20,8 @@ dependencies:
   easy_localization: ^3.0.7
   flutter_secure_storage: ^9.2.4
   country_state_city: ^0.1.6
+  flutter_svg: ^2.0.17
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

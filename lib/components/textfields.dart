@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../core/extensions/num_duration.dart';
+import 'animated_widgets.dart';
 
 class SignupTextField extends StatelessWidget {
   const SignupTextField({
@@ -108,21 +109,29 @@ class SignupTextField extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor,
+                      color: Theme
+                          .of(context)
+                          .primaryColor,
                       width: 1.5,
                     ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.error,
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .error,
                       width: 1.5,
                     ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.error,
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .error,
                       width: 1.5,
                     ),
                   ),
@@ -135,44 +144,36 @@ class SignupTextField extends StatelessWidget {
                   ),
                 ),
               ),
-              AnimatedSwitcher(
-                duration: 300.ms,
-                switchInCurve: Curves.easeInOut,
-                switchOutCurve: Curves.easeInOut,
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: SizeTransition(
-                      sizeFactor: animation,
-                      child: child,
-                    ),
-                  );
-                },
-                child: showError
-                    ? Padding(
-                        key: ValueKey<bool>(showError),
-                        padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.error,
-                              size: 16.0,
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                            const SizedBox(width: 4.0),
-                            Expanded(
-                              child: Text(
-                                state.errorText!,
-                                style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: Theme.of(context).colorScheme.error,
-                                ),
-                              ),
-                            ),
-                          ],
+              CustomAnimatedSwitcher(
+                value: showError,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.error,
+                        size: 16.0,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .error,
+                      ),
+                      const SizedBox(width: 4.0),
+                      Expanded(
+                        child: Text(
+                          state.errorText??'',
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: Theme
+                                .of(context)
+                                .colorScheme
+                                .error,
+                          ),
                         ),
-                      )
-                    : SizedBox.shrink(key: ValueKey<bool>(showError)),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           );
