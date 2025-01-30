@@ -9,6 +9,8 @@ class AppTexts {
   static final facialRecognitionPage = _FacialRecognitionPage();
   static final verifyPage = _VerifyPage();
   static final virtualAccountSelectionPage = _VirtualAccountSelectionPage();
+  static final dashboard = _Dashboard();
+  static final homePage = _HomePage();
 }
 
 class _OnboardingPage {
@@ -117,4 +119,26 @@ class _VirtualAccountSelectionPage {
   final title = '$_.title';
   final subtitle = '$_.subtitle';
   final done = '$_.done';
+}
+
+class _Dashboard {
+  static const _ = 'dashboard';
+  final home = '$_.home';
+  final card = '$_.card';
+  final bills = '$_.bills';
+  final profile = '$_.profile';
+}
+
+class _HomePage {
+  static const _ = 'homePage';
+  final welcomeTitle = '$_.welcomeTitle';
+  final addMoney = '$_.addMoney';
+  final send = '$_.send';
+  final convert = '$_.convert';
+  final transfer = '$_.transfer';
+  final cashOut = '$_.cashOut';
+  final recentTransaction = '$_.recentTransaction';
+  final seeAll = '$_.seeAll';
+  final swiperTitle = '$_.swiperTitle';
+  final swiperSubtitle = '$_.swiperSubtitle';
 }

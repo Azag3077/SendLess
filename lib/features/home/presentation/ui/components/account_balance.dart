@@ -14,14 +14,14 @@ class AccountBalance extends ConsumerWidget {
     required this.amount,
     required this.isBalanceVisible,
     required this.currency,
-    required this.onToggle,
+    this.onToggle,
     this.style = BalanceDisplayStyle.enlarge,
   });
 
   final double amount;
   final bool isBalanceVisible;
   final String currency;
-  final VoidCallback onToggle;
+  final VoidCallback? onToggle;
   final BalanceDisplayStyle style;
 
   @override
@@ -32,7 +32,7 @@ class AccountBalance extends ConsumerWidget {
     final iconButton = IconButton(
       onPressed: () {
         notifier.state = 0.0;
-        onToggle();
+        onToggle?.call();
       },
       color: Colors.white,
       style: IconButton.styleFrom(
@@ -71,6 +71,7 @@ class AccountBalance extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           key: ValueKey<bool>(isBalanceVisible),
           children: <Widget>[
+            if (onToggle != null)
             IgnorePointer(
               child: Opacity(
                 opacity: 0.0,
@@ -95,7 +96,7 @@ class AccountBalance extends ConsumerWidget {
                 builder: (_, double value, ___) => Text(value.integerPart),
               ),
               Text('.${amount.decimalPart}'),
-              iconButton,
+              if (onToggle != null) iconButton,
             ] else
               ...[
                 const SizedBox(width: 2.0),
@@ -106,7 +107,7 @@ class AccountBalance extends ConsumerWidget {
                     size: 20.0,
                   );
                 }),
-                iconButton,
+                if (onToggle != null) iconButton,
               ]
           ],
         ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../core/constants/assets.dart';
-
 class QuickActionRow extends StatelessWidget {
-  const QuickActionRow({super.key, required this.children,});
+  const QuickActionRow({
+    super.key,
+    required this.children,
+  });
+
   final List<QuickAction> children;
 
   @override

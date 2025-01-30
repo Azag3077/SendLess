@@ -104,6 +104,8 @@ class _Notifier extends AutoDisposeNotifier<_State> {
       return;
     }
 
+    if (state.pageIndex != 2) return;
+
     if (state.pinCode.length != 4) {
       return showToast(
         _pageText.verifyEmailPageView.subtitle.tr(args: [state.email]),

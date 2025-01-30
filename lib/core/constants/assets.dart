@@ -27,4 +27,7 @@ class _SvgAssetsName {
   final arrowLeftRight = '$_root/arrow-left-right.svg';
   final arrowUpRight = '$_root/arrow-up-right.svg';
   final briefCase = '$_root/brief-case.svg';
+  final instagram = '$_root/instagram.svg';
+  final youtube = '$_root/youtube.svg';
+  final x = '$_root/x.svg';
 }

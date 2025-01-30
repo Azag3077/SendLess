@@ -63,7 +63,7 @@ class SendLess extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),
-        textTheme: TextTheme(),
+        textTheme: const TextTheme(),
       ),
       onGenerateRoute: onGenerateRoute,
     );

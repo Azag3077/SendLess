@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../core/extensions/num_duration.dart';
 import 'animated_widgets.dart';
 
 class SignupTextField extends StatelessWidget {
@@ -109,29 +108,21 @@ class SignupTextField extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme
-                          .of(context)
-                          .primaryColor,
+                      color: Theme.of(context).primaryColor,
                       width: 1.5,
                     ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .error,
+                      color: Theme.of(context).colorScheme.error,
                       width: 1.5,
                     ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(radius),
                     borderSide: BorderSide(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .error,
+                      color: Theme.of(context).colorScheme.error,
                       width: 1.5,
                     ),
                   ),
@@ -153,21 +144,15 @@ class SignupTextField extends StatelessWidget {
                       Icon(
                         Icons.error,
                         size: 16.0,
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .error,
+                        color: Theme.of(context).colorScheme.error,
                       ),
                       const SizedBox(width: 4.0),
                       Expanded(
                         child: Text(
-                          state.errorText??'',
+                          state.errorText ?? '',
                           style: TextStyle(
                             fontSize: 12.0,
-                            color: Theme
-                                .of(context)
-                                .colorScheme
-                                .error,
+                            color: Theme.of(context).colorScheme.error,
                           ),
                         ),
                       ),

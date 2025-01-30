@@ -24,6 +24,23 @@ class WalletCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SizedBox(
+      height: 130.0,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(4, (index) {
+            return AzagA(
+              separate: index != 0,
+              wallet: wallet,
+              // balanceVisibility: balanceVisibility,
+              balanceVisibility: true,
+              onToggle: onToggle,
+            );
+          }),
+        ),
+      ),
+    );
     return Container(
       height: 140.0,
       padding: const EdgeInsets.all(8.0),
@@ -98,6 +115,54 @@ class WalletCard extends StatelessWidget {
             onToggle: onToggle,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class AzagA extends StatelessWidget {
+  const AzagA({
+    super.key,
+    required this.separate,
+    required this.wallet,
+    required this.balanceVisibility,
+    required this.onToggle,
+  });
+
+  final bool separate;
+  final Wallet wallet;
+  final bool balanceVisibility;
+  final VoidCallback onToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 170.0,
+      padding: const EdgeInsets.all(16.0),
+      margin: EdgeInsetsDirectional.only(start: separate ? 8.0 : 0.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: DefaultTextStyle(
+        style: const TextStyle(color: Colors.white),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const Icon(Icons.flag),
+            const Spacer(),
+            FittedBox(
+              child: AccountBalance(
+                currency: wallet.symbol,
+                amount: wallet.balance,
+                isBalanceVisible: balanceVisibility,
+                // onToggle: onToggle,
+              ),
+            ),
+            const SizedBox(height: 4.0),
+            const Text('Nigeria Naira'),
+          ],
+        ),
       ),
     );
   }

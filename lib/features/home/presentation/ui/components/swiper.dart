@@ -4,7 +4,12 @@ import '../../../../../core/constants/assets.dart';
 import 'page_indicator.dart';
 
 class SwiperView extends StatefulWidget {
-  const SwiperView({super.key});
+  const SwiperView({
+    super.key,
+    required this.children,
+  });
+
+  final List<SwiperContent> children;
 
   @override
   State<SwiperView> createState() => _SwiperViewState();
@@ -21,13 +26,7 @@ class _SwiperViewState extends State<SwiperView> {
           height: 130.0,
           child: PageView(
             controller: _controller,
-            children: List.generate(3, (_) {
-              return const SwiperContent(
-                subtitle: 'Make quick transactions with Emmpay',
-                title: 'Global Money Movement, Simplified: '
-                    'Send, Receive, Pay, Repeat.',
-              );
-            }),
+            children: widget.children,
           ),
         ),
         const SizedBox(height: 8.0),

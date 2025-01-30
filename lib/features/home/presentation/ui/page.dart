@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/assets.dart';
 import '../../../../core/constants/enums.dart';
+import '../../../../core/constants/texts.dart';
 import '../../../../data/models/transaction.dart';
 import '../provider.dart';
 import 'components/app_bar.dart';
-import 'components/page_indicator.dart';
 import 'components/quick_action_cards.dart';
 import 'components/swiper.dart';
 import 'components/tab.dart';
@@ -20,6 +20,7 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  static final _pageText = AppTexts.homePage;
   final _txnController = PageController();
 
   @override
@@ -43,8 +44,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     return Scaffold(
       appBar: HomeAppBar(
-        title: 'Hi Azag 👋🏿',
-        addMoneyText: 'Add money',
+        title: _pageText.welcomeTitle.tr(args: ['Azag']),
+        addMoneyText: _pageText.addMoney.tr(),
         onProfile: () => notifier.onProfile(context),
         onAddMoney: () => notifier.onAddMoney(context),
         onBellIcon: () => notifier.onAddMoney(context),
@@ -70,22 +71,22 @@ class _HomePageState extends ConsumerState<HomePage> {
                   QuickActionRow(
                     children: <QuickAction>[
                       QuickAction(
+                        text: _pageText.send.tr(),
                         iconPath: AssetImages.svgs.send,
-                        text: 'Send',
                         onPressed: () => notifier.onSend(context),
                       ),
                       QuickAction(
-                        text: 'Convert',
+                        text: _pageText.convert.tr(),
                         iconPath: AssetImages.svgs.arrowLeftRight,
                         onPressed: () => notifier.onConvert(context),
                       ),
                       QuickAction(
-                        text: 'Transfer',
+                        text: _pageText.transfer.tr(),
                         iconPath: AssetImages.svgs.arrowUpRight,
                         onPressed: () => notifier.onTransfer(context),
                       ),
                       QuickAction(
-                        text: 'Cash Out',
+                        text: _pageText.cashOut.tr(),
                         iconPath: AssetImages.svgs.briefCase,
                         onPressed: () => notifier.onCashOut(context),
                       ),
@@ -95,7 +96,14 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
             const SizedBox(height: 16.0),
-            const SwiperView(),
+            SwiperView(
+              children: List.generate(3, (_) {
+                return SwiperContent(
+                  subtitle: _pageText.swiperTitle.tr(),
+                  title: _pageText.swiperSubtitle.tr(),
+                );
+              }),
+            ),
             const SizedBox(height: 16.0),
             Padding(
               padding: pagePadding,
@@ -105,10 +113,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      const Text('Recent Transaction'),
+                      Text(_pageText.recentTransaction.tr()),
                       TextButton(
                         onPressed: () => notifier.onSeeAllTransactions(context),
-                        child: const Text('See All'),
+                        child: Text(_pageText.seeAll.tr()),
                       ),
                     ],
                   ),

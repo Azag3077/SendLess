@@ -127,5 +127,23 @@
         "hint": "Tailored for students with special benefits."
       }
     }
+  },
+  "dashboard": {
+    "home": "Home",
+    "card": "Card",
+    "bills": "Bills",
+    "profile": "Profile"
+  },
+  "homePage": {
+    "welcomeTitle": "Hi {} \uD83D\uDC4B\uD83C\uDFFF",
+    "addMoney": "Add money",
+    "send": "Send",
+    "convert": "Convert",
+    "transfer": "Transfer",
+    "cashOut": "Cash Out",
+    "recentTransaction": "Recent Transaction",
+    "seeAll": "See All",
+    "swiperTitle": "Make quick transactions with Emmpay",
+    "swiperSubtitle": "Global Money Movement, Simplified: Send, Receive, Pay, Repeat."
   }
 }
