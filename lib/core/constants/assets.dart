@@ -14,6 +14,13 @@ class _PngAssetsName {
   final homeCardBg = '$_root/home-card-bg.png';
   final success = '$_root/success.png';
   final screenshot = '$_root/screenshot.png';
+
+  final usaMap = '$_root/usa-map.png';
+  final usaFlag = '$_root/usa-flag.png';
+  final canadaMap = '$_root/canada-map.png';
+  final canadaFlag = '$_root/canada-flag.png';
+  final nigeriaMap = '$_root/nigeria-map.png';
+  final nigeriaFlag = '$_root/nigeria-flag.png';
 }
 
 class _SvgAssetsName {

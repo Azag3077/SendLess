@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 extension DoubleUtils on double {
   String get toPriceInString {
     final parts = toStringAsFixed(2).split('.');
@@ -12,6 +14,9 @@ extension DoubleUtils on double {
 
     return result;
   }
+
+  String toPrice(String symbol) =>
+      NumberFormat.currency(symbol: symbol).format(this);
 
   String get integerPart {
     final parts = toStringAsFixed(2).split('.');

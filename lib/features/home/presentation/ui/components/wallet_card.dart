@@ -1,8 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/constants/assets.dart';
 import '../../../../../data/models/wallet.dart';
 import 'account_balance.dart';
+
+class WalletsContainer extends StatelessWidget {
+  const WalletsContainer({
+    super.key,
+    required this.wallets,
+    required this.onWallet,
+    required this.onDownload,
+    required this.onToggle,
+    required this.balanceVisibility,
+    required this.padding,
+  });
+
+  final List<Wallet> wallets;
+  final VoidCallback onWallet;
+  final VoidCallback onDownload;
+  final VoidCallback onToggle;
+  final bool balanceVisibility;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 130.0,
+      child: SingleChildScrollView(
+        padding: padding,
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(wallets.length, (index) {
+            final wallet = wallets.elementAt(index);
+            return MiniWalletCard(
+              separate: index != 0,
+              wallet: wallet,
+              balanceVisibility: balanceVisibility,
+              onToggle: onToggle,
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
 
 class WalletCard extends StatelessWidget {
   const WalletCard({
@@ -13,6 +55,7 @@ class WalletCard extends StatelessWidget {
     required this.onDownload,
     required this.onToggle,
     required this.balanceVisibility,
+    required this.padding,
   });
 
   final String text;
@@ -21,26 +64,10 @@ class WalletCard extends StatelessWidget {
   final VoidCallback onDownload;
   final VoidCallback onToggle;
   final bool balanceVisibility;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 130.0,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(4, (index) {
-            return AzagA(
-              separate: index != 0,
-              wallet: wallet,
-              // balanceVisibility: balanceVisibility,
-              balanceVisibility: true,
-              onToggle: onToggle,
-            );
-          }),
-        ),
-      ),
-    );
     return Container(
       height: 140.0,
       padding: const EdgeInsets.all(8.0),
@@ -109,7 +136,7 @@ class WalletCard extends StatelessWidget {
             ),
           ),
           AccountBalance(
-            currency: wallet.symbol,
+            symbol: wallet.symbol,
             amount: wallet.balance,
             isBalanceVisible: balanceVisibility,
             onToggle: onToggle,
@@ -120,8 +147,10 @@ class WalletCard extends StatelessWidget {
   }
 }
 
-class AzagA extends StatelessWidget {
-  const AzagA({
+final _initialValueProvider = StateProvider<double>((_) => 0.0);
+
+class MiniWalletCard extends ConsumerWidget {
+  const MiniWalletCard({
     super.key,
     required this.separate,
     required this.wallet,
@@ -135,34 +164,73 @@ class AzagA extends StatelessWidget {
   final VoidCallback onToggle;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final initialValue = ref.watch(_initialValueProvider);
+    final notifier = ref.read(_initialValueProvider.notifier);
+
+    final iconButton = IconButton(
+      onPressed: () {
+        notifier.state = 0.0;
+        onToggle.call();
+      },
+      color: Colors.white,
+      style: IconButton.styleFrom(
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      icon: Icon(
+        balanceVisibility
+            ? Icons.visibility_outlined
+            : Icons.visibility_off_outlined,
+      ),
+    );
+
     return Container(
       width: 170.0,
-      padding: const EdgeInsets.all(16.0),
-      margin: EdgeInsetsDirectional.only(start: separate ? 8.0 : 0.0),
+      margin: EdgeInsetsDirectional.only(start: separate ? 12.0 : 0.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      child: DefaultTextStyle(
-        style: const TextStyle(color: Colors.white),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Icon(Icons.flag),
-            const Spacer(),
-            FittedBox(
-              child: AccountBalance(
-                currency: wallet.symbol,
-                amount: wallet.balance,
-                isBalanceVisible: balanceVisibility,
-                // onToggle: onToggle,
-              ),
+      child: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: Opacity(
+              opacity: .07,
+              child: Image.asset(wallet.map),
             ),
-            const SizedBox(height: 4.0),
-            const Text('Nigeria Naira'),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Image.asset(wallet.flag, width: 24.0),
+                    iconButton,
+                  ],
+                ),
+                const Spacer(),
+                FittedBox(
+                  child: AccountBalance(
+                    symbol: wallet.symbol,
+                    amount: wallet.balance,
+                    isBalanceVisible: balanceVisibility,
+                    // onToggle: onToggle,
+                  ),
+                ),
+                // Text('123456').animate().fade(),
+                Text(
+                  wallet.currency,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

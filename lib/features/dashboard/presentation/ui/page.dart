@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../components/buttons.dart';
@@ -14,11 +15,12 @@ class Dashboard extends ConsumerWidget {
   static const routeName = '/dashboard';
   static final _pageText = AppTexts.dashboard;
 
-  List<Widget> get _screens => const <Widget>[
-        HomePage(),
-        CardPage(),
-        Scaffold(backgroundColor: Colors.blue),
-        ProfilePage(),
+  List<Widget> get _screens => <Widget>[
+        const HomePage(),
+        const CardPage(),
+        BalanceScreen(),
+        const Scaffold(backgroundColor: Colors.blue),
+        const ProfilePage(),
       ];
 
   @override
@@ -192,7 +194,8 @@ class ProfilePage extends StatelessWidget {
                 color: Colors.black.withValues(alpha: .71),
               ),
             ),
-            Text('@Dummy_user',
+            Text(
+              '@Dummy_user',
               style: TextStyle(
                 color: Colors.black.withValues(alpha: .71),
               ),
@@ -294,6 +297,225 @@ class ProfilePage extends StatelessWidget {
             child: Divider(height: 2.0),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// class BalanceScreen extends StatefulWidget {
+//   @override
+//   _BalanceScreenState createState() => _BalanceScreenState();
+// }
+//
+// class _BalanceScreenState extends State<BalanceScreen> {
+//   bool _isHidden = true;
+//   final String _balance = "\$5,000.00"; // Example balance
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("Animated Balance")),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Container(
+//               width: 200,
+//               padding: EdgeInsets.all(12),
+//               decoration: BoxDecoration(
+//                 color: Colors.grey[200],
+//                 borderRadius: BorderRadius.circular(10),
+//               ),
+//               child: Align(
+//                 alignment: Alignment.centerLeft,
+//                 child: AnimatedSwitcher(
+//                   duration: Duration(milliseconds: 500),
+//                   transitionBuilder: (widget, animation) {
+//                     return FadeTransition(
+//                       opacity: animation,
+//                       child: widget,
+//                     );
+//                   },
+//                   child: SizedBox(
+//                     width: double.infinity, // Fixed width ensures alignment stays the same
+//                       key: ValueKey<bool>(_isHidden),
+//                     child: Text(
+//                       _isHidden ? "****" : _balance,
+//                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 setState(() {
+//                   _isHidden = !_isHidden;
+//                 });
+//               },
+//               child: Text(_isHidden ? "Show Balance" : "Hide Balance"),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class BalanceScreen extends StatefulWidget {
+  @override
+  _BalanceScreenState createState() => _BalanceScreenState();
+}
+
+class _BalanceScreenState extends State<BalanceScreen> {
+  bool _isHidden = true;
+  bool _isComplete = false;
+
+  // final String _balance = "\$5,000.00"; // Example balance
+  final int _balance = 5000; // Example balance
+
+  @override
+  Widget build(BuildContext context) {
+    final azag = Text(
+      _isHidden ? '****' : _balance.toString(),
+      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    );
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Animated Balance')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // children: [
+          //   Container(
+          //     width: 200,
+          //     padding: const EdgeInsets.all(12),
+          //     decoration: BoxDecoration(
+          //       color: Colors.grey[200],
+          //       borderRadius: BorderRadius.circular(10),
+          //     ),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: <Widget>[
+          //         Text(_balance.toString())
+          //             .animate(target: _isHidden ? 0 : 1)
+          //             .crossfade(
+          //                 duration: 1.seconds,
+          //                 alignment: Alignment.centerLeft,
+          //                 builder: (_) {
+          //                   return Text('D');
+          //                 })
+          //             .custom(builder: (_, __, ___) {
+          //               print(___);
+          //           return ___;
+          //         }),
+          //         Animate(
+          //           effects: [FadeEffect(), CrossfadeEffect(builder: (BuildContext context) { return Text('Python'); })],
+          //             target: _isHidden ? 1 : 0,
+          //           child: Text("Hello World!").animate().fadeIn(),
+          //         ),
+          //         azag
+          //             .animate(target: _isHidden ? 0 : 1)
+          //             .custom(
+          //               duration: 2.seconds,
+          //               builder: (_, double value, __) {
+          //                 final amount = value.clamp(0, 1200.23) * 1200.23;
+          //
+          //                 if (_isHidden) {
+          //                   return const Text(
+          //                     '****',
+          //                     style: TextStyle(
+          //                         fontSize: 24, fontWeight: FontWeight.bold),
+          //                   );
+          //                 }
+          //                 return Text(
+          //                   NumberFormat.currency(symbol: '\$').format(amount),
+          //                   style: const TextStyle(
+          //                     fontSize: 24,
+          //                     fontWeight: FontWeight.bold,
+          //                   ),
+          //                 );
+          //               },
+          //             )
+          //             .fade(end: 0.2, duration: 1.seconds)
+          //             .scaleX(end: 1.1, duration: 1.seconds),
+          //         if (_isHidden)
+          //           const Text(
+          //             '****',
+          //             style:
+          //                 TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          //           )
+          //         else
+          //           const Text(
+          //             '\$0.00', // Placeholder, actual value animates
+          //             style:
+          //                 TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          //           )
+          //               .animate()
+          //               .custom(
+          //                 duration: 2.seconds,
+          //                 builder: (_, double value, __) {
+          //                   final amount = value.clamp(0, 1200.23) * 1200.23;
+          //
+          //                   // if (_isHidden) {
+          //                   //   return const Text(
+          //                   //     '****',
+          //                   //     style: TextStyle(
+          //                   //         fontSize: 24, fontWeight: FontWeight.bold),
+          //                   //   );
+          //                   // }
+          //                   return Text(
+          //                     NumberFormat.currency(symbol: '\$')
+          //                         .format(amount),
+          //                     style: const TextStyle(
+          //                       fontSize: 24,
+          //                       fontWeight: FontWeight.bold,
+          //                     ),
+          //                   );
+          //                 },
+          //               )
+          //               .fade(duration: 500.ms)
+          //         // .slideX(begin: 0.2, end: 0),
+          //       ],
+          //     ),
+          //   ),
+          //   const SizedBox(height: 20),
+          //   ElevatedButton(
+          //     onPressed: () {
+          //       setState(() {
+          //         _isHidden = !_isHidden;
+          //       });
+          //     },
+          //     child: Text(_isHidden ? "Show Balance" : "Hide Balance"),
+          //   ),
+          // ],
+          children: <Widget>[
+            Container(
+              width: 200,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: DefaultTextStyle(
+                style: const TextStyle(fontSize: 24.0, color: Colors.black),
+                child: Row(children: List.generate(5, (_) => const Icon(Icons.emergency_rounded))).animate(target: _isHidden ? 1 : 0).crossfade(
+                  builder: (_) {
+                    return Text(
+                      _balance.toString(),
+                    );
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => setState(() => _isHidden = !_isHidden),
+              child: Text(_isHidden ? 'Show Balance' : 'Hide Balance'),
+            ),
+          ],
+        ),
       ),
     );
   }

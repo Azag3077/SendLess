@@ -55,19 +55,19 @@ class _HomePageState extends ConsumerState<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(height: 16.0),
+            WalletsContainer(
+              wallets: state.wallets,
+              onWallet: () => notifier.onWallet(context),
+              onDownload: () => notifier.onDownload(context),
+              onToggle: notifier.toggleBalanceVisibility,
+              balanceVisibility: state.balanceVisibility,
+              padding: pagePadding,
+            ),
+            const SizedBox(height: 16.0),
             Padding(
               padding: pagePadding,
               child: Column(
                 children: <Widget>[
-                  WalletCard(
-                    text: 'Account Balance',
-                    wallet: state.wallet!,
-                    onWallet: () => notifier.onWallet(context),
-                    onDownload: () => notifier.onDownload(context),
-                    onToggle: notifier.toggleBalanceVisibility,
-                    balanceVisibility: state.balanceVisibility,
-                  ),
-                  const SizedBox(height: 16.0),
                   QuickActionRow(
                     children: <QuickAction>[
                       QuickAction(

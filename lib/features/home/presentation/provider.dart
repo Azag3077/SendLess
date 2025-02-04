@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/constants/assets.dart';
 import '../../../core/extensions/num_duration.dart';
 import '../../../data/models/wallet.dart';
 
@@ -12,25 +13,25 @@ class _State {
   const _State({
     this.balanceVisibility = true,
     this.pageIndex = 0,
-    this.wallet,
+    this.wallets = const [],
     this.txnTabIndex = 0,
   });
 
   final bool balanceVisibility;
   final int pageIndex;
-  final Wallet? wallet;
+  final List<Wallet> wallets;
   final int txnTabIndex;
 
   _State copyWith({
     bool? balanceVisibility,
     int? pageIndex,
-    Wallet? wallet,
+    List<Wallet>? wallets,
     int? txnTabIndex,
   }) {
     return _State(
       balanceVisibility: balanceVisibility ?? this.balanceVisibility,
       pageIndex: pageIndex ?? this.pageIndex,
-      wallet: wallet ?? this.wallet,
+      wallets: wallets ?? this.wallets,
       txnTabIndex: txnTabIndex ?? this.txnTabIndex,
     );
   }
@@ -44,12 +45,29 @@ class _Notifier extends Notifier<_State> {
   _State build() {
     ref.onDispose(_onDispose);
     return _State(
-      wallet: Wallet(
-        currency: 'United State Dollar',
-        symbol: r'$',
-        flag: '',
-        balance: 2580440.30,
-      ),
+      wallets: <Wallet>[
+        Wallet(
+          currency: 'United State Dollar',
+          symbol: r'$',
+          flag: AssetImages.pngs.usaFlag,
+          map: AssetImages.pngs.usaMap,
+          balance: 580440231.30,
+        ),
+        Wallet(
+          currency: 'Nigerian Naira',
+          symbol: '₦',
+          flag: AssetImages.pngs.nigeriaFlag,
+          map: AssetImages.pngs.nigeriaMap,
+          balance: 14000.00,
+        ),
+        Wallet(
+          currency: 'Canadian Dollar',
+          symbol: r'$',
+          flag: AssetImages.pngs.canadaFlag,
+          map: AssetImages.pngs.canadaMap,
+          balance: 0.00,
+        ),
+      ],
     );
   }
 
