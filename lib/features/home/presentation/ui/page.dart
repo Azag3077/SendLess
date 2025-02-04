@@ -66,31 +66,27 @@ class _HomePageState extends ConsumerState<HomePage> {
             const SizedBox(height: 16.0),
             Padding(
               padding: pagePadding,
-              child: Column(
-                children: <Widget>[
-                  QuickActionRow(
-                    children: <QuickAction>[
-                      QuickAction(
-                        text: _pageText.send.tr(),
-                        iconPath: AssetImages.svgs.send,
-                        onPressed: () => notifier.onSend(context),
-                      ),
-                      QuickAction(
-                        text: _pageText.convert.tr(),
-                        iconPath: AssetImages.svgs.arrowLeftRight,
-                        onPressed: () => notifier.onConvert(context),
-                      ),
-                      QuickAction(
-                        text: _pageText.transfer.tr(),
-                        iconPath: AssetImages.svgs.arrowUpRight,
-                        onPressed: () => notifier.onTransfer(context),
-                      ),
-                      QuickAction(
-                        text: _pageText.cashOut.tr(),
-                        iconPath: AssetImages.svgs.briefCase,
-                        onPressed: () => notifier.onCashOut(context),
-                      ),
-                    ],
+              child: QuickActionRow(
+                children: <QuickAction>[
+                  QuickAction(
+                    text: _pageText.send.tr(),
+                    iconPath: AssetImages.svgs.send,
+                    onPressed: () => notifier.onSend(context),
+                  ),
+                  QuickAction(
+                    text: _pageText.convert.tr(),
+                    iconPath: AssetImages.svgs.arrowLeftRight,
+                    onPressed: () => notifier.onConvert(context),
+                  ),
+                  QuickAction(
+                    text: _pageText.transfer.tr(),
+                    iconPath: AssetImages.svgs.arrowUpRight,
+                    onPressed: () => notifier.onTransfer(context),
+                  ),
+                  QuickAction(
+                    text: _pageText.cashOut.tr(),
+                    iconPath: AssetImages.svgs.briefCase,
+                    onPressed: () => notifier.onCashOut(context),
                   ),
                 ],
               ),

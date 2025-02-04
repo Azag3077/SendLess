@@ -37,4 +37,8 @@ class _SvgAssetsName {
   final instagram = '$_root/instagram.svg';
   final youtube = '$_root/youtube.svg';
   final x = '$_root/x.svg';
+  final tv = '$_root/tv.svg';
+  final call = '$_root/call.svg';
+  final wifi = '$_root/wifi.svg';
+  final bulb = '$_root/bulb.svg';
 }
