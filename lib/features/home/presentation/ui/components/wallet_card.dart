@@ -31,15 +31,29 @@ class WalletsContainer extends StatelessWidget {
         padding: padding,
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: List.generate(wallets.length, (index) {
-            final wallet = wallets.elementAt(index);
-            return MiniWalletCard(
-              separate: index != 0,
-              wallet: wallet,
-              balanceVisibility: balanceVisibility,
-              onToggle: onToggle,
-            );
-          }),
+          children: <Widget>[
+            ...List.generate(wallets.length, (index) {
+              final wallet = wallets.elementAt(index);
+              return MiniWalletCard(
+                separate: index != 0,
+                wallet: wallet,
+                balanceVisibility: balanceVisibility,
+                onToggle: onToggle,
+              );
+            }),
+            const SizedBox(width: 16.0),
+            IconButton.filledTonal(
+              onPressed: () {},
+              style: IconButton.styleFrom(
+                iconSize: 32.0,
+                padding: const EdgeInsets.all(12.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              icon: const Icon(Icons.add),
+            ),
+          ],
         ),
       ),
     );
@@ -165,7 +179,6 @@ class MiniWalletCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final initialValue = ref.watch(_initialValueProvider);
     final notifier = ref.read(_initialValueProvider.notifier);
 
     final iconButton = IconButton(
@@ -217,10 +230,8 @@ class MiniWalletCard extends ConsumerWidget {
                     symbol: wallet.symbol,
                     amount: wallet.balance,
                     isBalanceVisible: balanceVisibility,
-                    // onToggle: onToggle,
                   ),
                 ),
-                // Text('123456').animate().fade(),
                 Text(
                   wallet.currency,
                   style: const TextStyle(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/assets.dart';
+import '../../../../core/constants/enums.dart';
 import '../provider.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -9,8 +10,8 @@ class ProfilePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(profilePageProvider);
-    ref.read(profilePageProvider.notifier);
+    final state = ref.watch(profilePageProvider);
+    final notifier = ref.read(profilePageProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Profile')),
@@ -18,51 +19,62 @@ class ProfilePage extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            const CircleAvatar(
-              radius: 30.0,
-            ),
+            const CircleAvatar(radius: 30.0),
             const SizedBox(height: 8.0),
             Text(
-              'Dummy User',
+              state.userProfile!.fullname,
               style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.w500,
                 color: Colors.black.withValues(alpha: .71),
               ),
             ),
-            Text(
-              '@Dummy_user',
-              style: TextStyle(
-                color: Colors.black.withValues(alpha: .71),
+            GestureDetector(
+              onTap: () => notifier.onCopy(context, '@Dummy_user', 'azag'),
+              child: Text(
+                '@Dummy_user',
+                style: TextStyle(
+                  color: Colors.black.withValues(alpha: .71),
+                ),
               ),
             ),
             const SizedBox(height: 24.0),
             _buildListTile(
               context: context,
               title: 'Full Name',
-              subtitle: 'Dummy User',
-              onPressed: () {},
+              subtitle: state.userProfile!.fullname,
+              onPressed: () =>
+                  notifier.updateProfileInfo(context, ProfileField.fullname),
               trailingIcon: Icons.edit_note,
             ),
             _buildListTile(
               context: context,
               title: 'Phone Number',
-              subtitle: '08012345678',
-              onPressed: () {},
+              subtitle: state.userProfile!.phoneNumber,
+              onPressed: () =>
+                  notifier.updateProfileInfo(context, ProfileField.phoneNumber),
               trailingIcon: Icons.edit_note,
             ),
             _buildListTile(
               context: context,
               title: 'Email',
-              subtitle: 'dummyemail@test.com',
-              onPressed: () {},
+              subtitle: state.userProfile!.email,
+              onPressed: () =>
+                  notifier.updateProfileInfo(context, ProfileField.email),
+              trailingIcon: Icons.edit_note,
+            ),
+            _buildListTile(
+              context: context,
+              title: 'Gender',
+              subtitle: state.userProfile!.gender.trKey.tr(),
+              // onPressed: () => notifier.updateProfileInfo(context, ProfileField.gender),
               trailingIcon: Icons.edit_note,
             ),
             _buildListTile(
               context: context,
               title: 'Settings',
               subtitle: 'control your notification and security settings',
-              onPressed: () {},
+              onPressed: () => notifier.onSettings(context),
             ),
             _buildListTile(
               context: context,
@@ -99,7 +111,7 @@ class ProfilePage extends ConsumerWidget {
     IconData? trailingIcon,
   }) {
     return ListTile(
-      onTap: () {},
+      onTap: onPressed,
       title: Text(title),
       subtitle: Text(subtitle),
       titleTextStyle: Theme.of(context).textTheme.titleMedium,

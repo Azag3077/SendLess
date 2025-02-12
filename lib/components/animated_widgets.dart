@@ -29,9 +29,9 @@ class CustomAnimatedSwitcher extends StatelessWidget {
       },
       child: value
           ? SizedBox(
-        key: ValueKey<bool>(value),
-        child: child,
-      )
+              key: ValueKey<bool>(value),
+              child: child,
+            )
           : SizedBox.shrink(key: ValueKey<bool>(value)),
     );
   }

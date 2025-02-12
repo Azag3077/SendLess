@@ -3,7 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/assets.dart';
 import '../../../core/extensions/num_duration.dart';
+import '../../../core/routers/router.dart';
 import '../../../data/models/wallet.dart';
+import '../../convert/presentation/ui/page.dart';
+import '../../send/presentation/ui/page.dart';
+import '../../transfer/presentation/ui/page.dart';
 
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -91,11 +95,13 @@ class _Notifier extends Notifier<_State> {
   void toggleBalanceVisibility() =>
       state = state.copyWith(balanceVisibility: !state.balanceVisibility);
 
-  void onSend(BuildContext context) {}
+  void onSend(BuildContext context) => pushNamed(context, SendPage.routeName);
 
-  void onConvert(BuildContext context) {}
+  void onConvert(BuildContext context) =>
+      pushNamed(context, ConvertPage.routeName);
 
-  void onTransfer(BuildContext context) {}
+  void onTransfer(BuildContext context) =>
+      pushNamed(context, TransferPage.routeName);
 
   void onCashOut(BuildContext context) {}
 

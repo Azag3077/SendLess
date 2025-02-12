@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 
-Future<T?> pushNamed<T extends Object?>(BuildContext context,
-    String routeName, {
-      Object? arguments,
-    }) async =>
+Future<T?> pushNamed<T extends Object?>(
+  BuildContext context,
+  String routeName, {
+  Object? arguments,
+}) async =>
     await Navigator.of(context).pushNamed<T>(routeName, arguments: arguments);
 
-Future<void> pushReplacementNamed(BuildContext context,
-    String routeName, {
-      Object? arguments,
-    }) async =>
+Future<void> pushReplacementNamed(
+  BuildContext context,
+  String routeName, {
+  Object? arguments,
+}) async =>
     await Navigator.pushReplacementNamed(context, routeName,
         arguments: arguments);
 
-void pushNamedAndRemoveUntil(BuildContext context, [String routeName = '/']) =>
+void pushNamedAndRemoveUntil(
+  BuildContext context,
+  String routeName, {
+  String until = '/',
+  Object? arguments,
+}) =>
     Navigator.pushNamedAndRemoveUntil(
-        context, routeName, (route) => route.settings.name == routeName);
+      context,
+      routeName,
+      (route) => route.settings.name == until,
+      arguments: arguments,
+    );
 
 void popUntil(BuildContext context, [String routeName = '/']) {
   Navigator.popUntil(context, ModalRoute.withName(routeName));

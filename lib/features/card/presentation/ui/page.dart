@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../components/buttons.dart';
-import '../../../../core/constants/assets.dart';
 import '../provider.dart';
 import 'components/virtual_card_container.dart';
 import 'components/virtual_card_details.dart';
@@ -105,7 +104,8 @@ class CardPage extends ConsumerWidget {
                     Flexible(
                       child: CardDetailsContainer(
                         virtualCard: state.virtualCard!,
-                        onCopy: notifier.onCopy,
+                        onCopy: (text, value) =>
+                            notifier.onCopy(context, text, value),
                       ),
                     )
                   ],

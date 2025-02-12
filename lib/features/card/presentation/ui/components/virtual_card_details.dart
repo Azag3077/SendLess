@@ -23,7 +23,7 @@ class CardDetailsContainer extends StatelessWidget {
         ListTile(
           title: Text(title),
           titleTextStyle:
-          Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10.0),
+              Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10.0),
           subtitle: Text(subtitle),
           trailing: IconButton(
             onPressed: () => onCopy(title, subtitle),

@@ -15,7 +15,7 @@ class PageIndicator extends StatelessWidget {
     return Row(
       children: List.generate(
         length,
-            (index) {
+        (index) {
           final isCurrent = index <= currentIndex;
 
           return <Widget>[
@@ -36,11 +36,9 @@ class PageIndicator extends StatelessWidget {
                   color: isCurrent ? null : Colors.black.withValues(alpha: .30),
                   border: isCurrent
                       ? Border.all(
-                    width: 7.0,
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
-                  )
+                          width: 7.0,
+                          color: Theme.of(context).primaryColor,
+                        )
                       : null,
                 ),
               ),

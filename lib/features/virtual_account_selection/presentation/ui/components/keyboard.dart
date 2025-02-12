@@ -159,9 +159,7 @@ class _ButtonsGridState extends State<ButtonsGrid> {
             onPressed: () => _onPressed(btn.key),
             elevation: 0,
             highlightElevation: 0,
-            color: Theme
-                .of(context)
-                .highlightColor,
+            color: Theme.of(context).highlightColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
             ),
@@ -170,21 +168,18 @@ class _ButtonsGridState extends State<ButtonsGrid> {
               children: <Widget>[
                 if (btn.key < 0)
                   Text(btn.value, style: const TextStyle(fontSize: 22.0))
-                else
-                  ...[
-                    Text(
-                      btn.key.toString(),
-                      style: const TextStyle(fontSize: 22.0),
+                else ...[
+                  Text(
+                    btn.key.toString(),
+                    style: const TextStyle(fontSize: 22.0),
+                  ),
+                  Text(
+                    btn.value,
+                    style: TextStyle(
+                      color: Theme.of(context).disabledColor,
                     ),
-                    Text(
-                      btn.value,
-                      style: TextStyle(
-                        color: Theme
-                            .of(context)
-                            .disabledColor,
-                      ),
-                    ),
-                  ],
+                  ),
+                ],
               ],
             ),
           ),

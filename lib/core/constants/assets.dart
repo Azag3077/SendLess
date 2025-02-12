@@ -21,6 +21,16 @@ class _PngAssetsName {
   final canadaFlag = '$_root/canada-flag.png';
   final nigeriaMap = '$_root/nigeria-map.png';
   final nigeriaFlag = '$_root/nigeria-flag.png';
+
+  final glo = '$_root/glo.png';
+  final mtn = '$_root/mtn.png';
+  final airtel = '$_root/airtel.png';
+  final nineMobile = '$_root/9mobile.png';
+  final rectangle = '$_root/rectangle.png';
+  final bonus = '$_root/bonus.png';
+  final radio = '$_root/radio.png';
+  final wallet = '$_root/wallet.png';
+  final doubleArrows = '$_root/double-arrows.png';
 }
 
 class _SvgAssetsName {
@@ -37,6 +47,7 @@ class _SvgAssetsName {
   final instagram = '$_root/instagram.svg';
   final youtube = '$_root/youtube.svg';
   final x = '$_root/x.svg';
+
   final tv = '$_root/tv.svg';
   final call = '$_root/call.svg';
   final wifi = '$_root/wifi.svg';

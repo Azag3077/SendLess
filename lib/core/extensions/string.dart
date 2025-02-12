@@ -63,7 +63,7 @@ extension StringExtension on String {
     List<String> parts = str.split('.');
     String integerPart = parts[0].replaceAllMapped(
         RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-            (Match match) => '${match[1]},');
+        (Match match) => '${match[1]},');
     String result = integerPart;
 
     if (parts.length > 1) {

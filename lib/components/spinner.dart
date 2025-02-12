@@ -30,10 +30,7 @@ class SpinnerDialog extends StatelessWidget {
           child: CircularProgressIndicator(
             strokeWidth: 8.0,
             strokeCap: StrokeCap.round,
-            backgroundColor: Theme
-                .of(context)
-                .colorScheme
-                .primaryContainer,
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
       ),
@@ -51,10 +48,7 @@ class AppSpinner extends StatelessWidget {
       children: <Widget>[
         CircularProgressIndicator(
           strokeCap: StrokeCap.round,
-          backgroundColor: Theme
-              .of(context)
-              .colorScheme
-              .primaryContainer,
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
       ],
     );

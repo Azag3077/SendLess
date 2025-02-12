@@ -130,6 +130,14 @@ class CustomChip extends StatelessWidget {
     return Chip(
       label: Text(text),
       visualDensity: VisualDensity.compact,
+      padding: EdgeInsets.zero,
+      labelStyle: TextStyle(
+        fontSize: 12.0,
+        color: Colors.blueGrey.shade600,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
       backgroundColor:
           isSelected ? Theme.of(context).colorScheme.primaryContainer : null,
     );

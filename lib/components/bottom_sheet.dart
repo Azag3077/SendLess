@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../core/extensions/num_duration.dart';
 
+import '../core/extensions/num_duration.dart';
 import '../core/routers/router.dart';
 
 class CustomBottomSheet<T> extends StatefulWidget {
@@ -47,8 +47,7 @@ class _CustomBottomSheetState<T> extends State<CustomBottomSheet<T>> {
         children: <Widget>[
           Text(
             widget.title,
-            style: Theme
-                .of(context)
+            style: Theme.of(context)
                 .textTheme
                 .titleMedium!
                 .copyWith(fontSize: 18.0, color: Colors.grey.shade700),
@@ -83,10 +82,9 @@ class _CustomBottomSheetState<T> extends State<CustomBottomSheet<T>> {
                         elevation: 0,
                         padding: const EdgeInsets.all(12.0),
                         color: (isSelected ?? widget.selected) == item
-                            ? Theme
-                            .of(context)
-                            .primaryColor
-                            .withValues(alpha: .15)
+                            ? Theme.of(context)
+                                .primaryColor
+                                .withValues(alpha: .15)
                             : null,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
@@ -116,12 +114,10 @@ class _CustomBottomSheetState<T> extends State<CustomBottomSheet<T>> {
                                   vertical: -4.0,
                                 ),
                                 materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                 fillColor: WidgetStatePropertyAll(
                                   (isSelected ?? widget.selected) == item
-                                      ? Theme
-                                      .of(context)
-                                      .primaryColor
+                                      ? Theme.of(context).primaryColor
                                       : Colors.grey.shade400,
                                 ),
                               ),

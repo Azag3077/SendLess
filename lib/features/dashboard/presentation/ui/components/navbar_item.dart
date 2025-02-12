@@ -7,9 +7,9 @@ class NavbarItem extends BottomNavigationBarItem {
     required super.label,
     required this.iconPath,
   }) : super(
-    icon: SvgPicture.asset(iconPath),
-    activeIcon: _NavbarActiveIcon(iconPath),
-  );
+          icon: SvgPicture.asset(iconPath),
+          activeIcon: _NavbarActiveIcon(iconPath),
+        );
 
   final String iconPath;
 }

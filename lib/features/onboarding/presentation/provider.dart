@@ -10,7 +10,8 @@ import '../../onboarding2/presentation/ui.dart';
 final onboardingPageProvider = Provider<_Provider>((_) => _Provider());
 
 class _Provider {
-  void onGetStarted(BuildContext context) => pushNamed(context, OnboardingPage2.routeName);
+  void onGetStarted(BuildContext context) =>
+      pushNamed(context, OnboardingPage2.routeName);
 
   void onLogin(BuildContext context) {
     if (kDebugMode) {

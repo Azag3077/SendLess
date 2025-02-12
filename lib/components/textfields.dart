@@ -9,7 +9,7 @@ class SignupTextField extends StatelessWidget {
     this.controller,
     this.keyboardType,
     this.textInputAction,
-    required this.labelText,
+    this.labelText,
     this.hintText,
     this.errorText,
     this.inputFormatters,
@@ -18,6 +18,7 @@ class SignupTextField extends StatelessWidget {
     EdgeInsets? margin,
     this.prefixIcon,
     this.suffixIcon,
+    this.suffixIconConstraints,
     this.obscureText = false,
     this.obscuringCharacter = '*',
     this.textCapitalization = TextCapitalization.none,
@@ -31,7 +32,7 @@ class SignupTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final String labelText;
+  final String? labelText;
   final String? hintText;
   final String? errorText;
   final List<TextInputFormatter>? inputFormatters;
@@ -47,6 +48,7 @@ class SignupTextField extends StatelessWidget {
   final bool canRequestFocus;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final BoxConstraints? suffixIconConstraints;
   final int? maxLength;
 
   @override
@@ -62,17 +64,18 @@ class SignupTextField extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0, bottom: 8.0),
-                child: Text(
-                  labelText,
-                  style: TextStyle(
-                    color: Colors.black.withValues(alpha: .89),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16.0,
+              if (labelText != null)
+                Padding(
+                  padding: const EdgeInsets.only(left: 2.0, bottom: 8.0),
+                  child: Text(
+                    labelText!,
+                    style: TextStyle(
+                      color: Colors.black.withValues(alpha: .89),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
-              ),
               TextField(
                 controller: controller,
                 keyboardType: keyboardType,
@@ -128,7 +131,7 @@ class SignupTextField extends StatelessWidget {
                   ),
                   prefixIcon: prefixIcon,
                   suffixIcon: suffixIcon,
-                  prefixIconConstraints: const BoxConstraints(),
+                  suffixIconConstraints: suffixIconConstraints,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                     vertical: 12.0,

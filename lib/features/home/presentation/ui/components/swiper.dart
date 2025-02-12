@@ -60,10 +60,9 @@ class SwiperContent extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.green,
         borderRadius: BorderRadius.circular(15.0),
         gradient: const LinearGradient(
-          colors: [
+          colors: <Color>[
             Color(0xFF3E9850),
             Color(0xFF14321A),
           ],

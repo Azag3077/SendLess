@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 export 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -51,8 +52,11 @@ class _Notifier extends Notifier<_State> {
     state = state.copyWith(activated: true, virtualCard: virtualCard);
   }
 
-  void onCopy(String text, String value) {
-    print('$text copied to clipboard successfully');
+  void onCopy(BuildContext context, String text, String value) {
+    Clipboard.setData(ClipboardData(text: value));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('$text copied to clipboard!')),
+    );
   }
 }
 

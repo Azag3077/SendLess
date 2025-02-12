@@ -10,8 +10,7 @@ class BillsPaymentPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(cardPageProvider);
-    final notifier = ref.watch(cardPageProvider.notifier);
+    final notifier = ref.read(billsPaymentPageProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Bills Payment')),
@@ -22,38 +21,38 @@ class BillsPaymentPage extends ConsumerWidget {
           children: <Widget>[
             const SignupTextField(
               labelText: '',
-              hintText: 'Search any thing',
+              hintText: 'Search anything',
               suffixIcon: Icon(
                 Icons.search,
                 color: Colors.grey,
               ),
             ),
             Text(
-              'Essential',
+              'Essentials',
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 16.0),
             BillsGrid(
-              children: <BillsContainer>[
-                BillsContainer(
+              children: <BillsButton>[
+                BillsButton(
                   text: 'Airtime',
-                  iconPath: AssetImages.svgs.send,
-                  onPressed: () {},
+                  iconPath: AssetImages.svgs.call,
+                  onPressed: () => notifier.onAirtime(context),
                 ),
-                BillsContainer(
+                BillsButton(
                   text: 'Internet',
-                  iconPath: AssetImages.svgs.arrowLeftRight,
-                  onPressed: () {},
+                  iconPath: AssetImages.svgs.wifi,
+                  onPressed: () => notifier.onInternet(context),
                 ),
-                BillsContainer(
+                BillsButton(
                   text: 'Tv',
-                  iconPath: AssetImages.svgs.arrowUpRight,
-                  onPressed: () {},
+                  iconPath: AssetImages.svgs.tv,
+                  onPressed: () => notifier.onTv(context),
                 ),
-                BillsContainer(
+                BillsButton(
                   text: 'Electricity',
-                  iconPath: AssetImages.svgs.briefCase,
-                  onPressed: () {},
+                  iconPath: AssetImages.svgs.bulb,
+                  onPressed: () => notifier.onElectricity(context),
                 ),
               ],
             ),

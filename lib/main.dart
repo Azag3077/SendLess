@@ -49,19 +49,7 @@ class SendLess extends StatelessWidget {
         bottomSheetTheme: BottomSheetThemeData(
           showDragHandle: true,
           backgroundColor: Colors.white,
-          dragHandleColor: Theme
-              .of(context)
-              .highlightColor,
-        ),
-        chipTheme: ChipThemeData(
-          padding: EdgeInsets.zero,
-          labelStyle: TextStyle(
-            fontSize: 12.0,
-            color: Colors.blueGrey.shade600,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
+          dragHandleColor: Theme.of(context).highlightColor,
         ),
         textTheme: const TextTheme(),
       ),

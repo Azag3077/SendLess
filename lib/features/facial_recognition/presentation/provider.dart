@@ -7,7 +7,7 @@ import '../../verify/presentation/ui/page.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final facialRecognitionPageProvider =
-AutoDisposeNotifierProvider<_Notifier, _State>(_Notifier.new);
+    AutoDisposeNotifierProvider<_Notifier, _State>(_Notifier.new);
 
 class _State {
   _State({
